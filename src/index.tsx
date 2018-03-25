@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './redux/store/configureStore';
 import Layout from './components/Layout/Layout';
+import './index.scss';
+
 const store = configureStore({});
 
 ReactDOM.render(

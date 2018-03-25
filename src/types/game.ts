@@ -3,5 +3,6 @@ export interface IGame {
   description: string;
   developerGithubId: string;
   url: string;
+  keyPointsOfInterest: string;
   techIds: string[];
 }

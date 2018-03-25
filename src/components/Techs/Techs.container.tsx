@@ -7,16 +7,22 @@ import { IState } from '../../types/state';
 
 const { getTechsData } = selectors;
 
-class GameContainer extends React.PureComponent<IProps> {
+interface IProps {
+  techs: { [key: string]: ITech };
+  techIds: string[];
+}
+
+class TechsContainer extends React.PureComponent<IProps> {
   render() {
-    return <Game {...this.props.game} />;
+    const { techs, techIds } = this.props;
+    return <Techs techs={techs} techIds={techIds} />;
   }
 }
 
-const mapStateToProps = (state: IState, { id }: { id: string }) => {
+const mapStateToProps = (state: IState) => {
   return {
-    game: getGamesData(state)[id]
+    techs: getTechsData(state)
   };
 };
 
-export default connect(mapStateToProps)(GameContainer);
+export default connect(mapStateToProps)(TechsContainer);
