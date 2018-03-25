@@ -1,0 +1,14 @@
+.gameContainer {
+  background-color: #363636;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 200px;
+}
+
+.game {
+  background-color: white;
+  width: 780px;
+  height: 520px;
+}

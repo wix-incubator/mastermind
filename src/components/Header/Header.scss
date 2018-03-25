@@ -1,0 +1,11 @@
+.headerContainer {
+  background-color: #000000;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  color: white;
+  margin-left: 30px;
+}
