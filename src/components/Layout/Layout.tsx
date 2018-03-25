@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Header from '../Header/Header';
-import Game from '../Game/Game';
-import GameDetails from '../GameDetails/GameDetails';
+import GameContainer from '../Game/Game.container';
 const styles = require('./Layout.scss');
 
 export default class Layout extends React.PureComponent {
@@ -9,8 +8,7 @@ export default class Layout extends React.PureComponent {
     return (
       <div className={styles.layoutContainer}>
         <Header />
-        <Game />
-        <GameDetails />
+        <GameContainer id={'1a2b3c'} />
       </div>
     );
   }

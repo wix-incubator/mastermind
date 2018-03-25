@@ -1,4 +1,10 @@
-.gameDetailsContainer {
-  background-color: #676767;
+.gameHeader {
+  background-color: #000000;
   grid-column: 1 / -1;
+}
+
+.details {
+  background-color: #ffffff;
+  grid-column: 1 / -1;
+  padding-top: 30px;
 }
