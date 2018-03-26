@@ -4,7 +4,9 @@ import { techs } from '../../Constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
   initialState: {
-    devs: {},
+    devs: {
+      data: {}
+    },
     games: {
       sorted: ['1a2b3c'],
       data: {

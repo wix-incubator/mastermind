@@ -1,5 +1,46 @@
+@import '../../Constants/styles.scss';
+
 .container {
-  grid-column: 10 span 2;
-  background-color: red;
-  height: 200px;
+  width: 280px;
+  border-radius: 4px;
+  border: solid 1px $greyBorder2;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.name {
+  @include Montserrat(20px);
+  color: $standardText;
+  line-height: 1.5;
+  margin-top: 21px;
+}
+
+.socialIcon {
+  font-size: 24px;
+  color: $socialIcons;
+}
+
+.socialLinksContainer {
+  display: flex;
+  width: 70px;
+  justify-content: space-between;
+  margin-top: 17px;
+}
+
+.socialLink {
+  text-decoration-line: none;
+}
+
+.bio {
+  @include Lato(14px);
+  line-height: 20px;
 }
