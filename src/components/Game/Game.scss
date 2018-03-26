@@ -1,5 +1,7 @@
+@import '../../Constants/styles.scss';
+
 .gameContainer {
-  background-color: #363636;
+  background-color: $black;
   grid-column: 1 / -1;
   display: flex;
   align-items: center;
@@ -8,7 +10,7 @@
 }
 
 .game {
-  background-color: white;
-  width: 780px;
-  height: 520px;
+  background-color: $white;
+  width: 768px;
+  height: 432px;
 }

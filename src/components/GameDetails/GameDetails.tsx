@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IGame } from '../../types/game';
 import DetailHeader from '../DetailHeader/DetailHeader';
 import TechsContainer from '../Techs/Techs.container';
+// import DevDetailsContainer from '../DevDetails/DevDetails.container';
 const styles = require('./GameDetails.scss');
 
 export default class GameDetails extends React.PureComponent<IGame> {
@@ -9,18 +10,16 @@ export default class GameDetails extends React.PureComponent<IGame> {
     const { description, techIds, keyPointsOfInterest } = this.props;
 
     return (
-      <React.Fragment>
-        <div className={styles.gameHeader}>
-          <span>DOOM Minesweeper</span>
-        </div>
-        <div className={styles.details}>
+      <div className={styles.outerGameDetails}>
+        <div className={styles.innerGameDetails}>
           <DetailHeader text={'About Game'} />
-          <p>{description}</p>
+          <p className={styles.text}>{description}</p>
+          <DetailHeader text={'Technologies Used'} />
           <TechsContainer techIds={techIds} />
           <DetailHeader text={'Key Points Of Interest'} />
-          <p>{keyPointsOfInterest}</p>
+          <p className={styles.text}>{keyPointsOfInterest}</p>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

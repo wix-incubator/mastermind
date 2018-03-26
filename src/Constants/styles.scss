@@ -1,0 +1,18 @@
+// Colors
+$radioActiveGreen: #38d750;
+$black: #0f0f0f;
+$white: #ffffff;
+$darkText: #272727;
+$greyBorder: #e8e8e8;
+$standardText: #333333;
+
+// Fonts
+@mixin Montserrat($size) {
+  font-family: 'Montserrat', sans-serif;
+  font-size: $size;
+}
+
+@mixin Lato($size) {
+  font-family: 'Lato', sans-serif;
+  font-size: $size;
+}

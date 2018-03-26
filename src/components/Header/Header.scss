@@ -1,11 +1,19 @@
-.headerContainer {
-  background-color: #000000;
+@import '../../Constants/styles.scss';
+
+.outerHeaderContainer {
+  background-color: $black;
   grid-column: 1 / -1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 928px 1fr;
   align-items: center;
+  border-bottom: 1px solid $darkText;
+}
+
+.innerHeaderContainer {
+  grid-column: 2 / -2;
 }
 
 .header {
-  color: white;
-  margin-left: 30px;
+  @include Montserrat(24px);
+  color: $white;
 }

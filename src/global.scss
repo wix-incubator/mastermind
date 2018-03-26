@@ -1,0 +1,20 @@
+@import './src/Constants/styles.scss';
+
+body {
+  background-color: $black;
+  margin: 0 !important;
+}
+
+/* tooltip styles */
+:global(.react-tooltip-lite) {
+  background: $darkText;
+  color: $white;
+  border-radius: 8px;
+  font-family: HelveticaNeueW01-55Roma;
+  font-size: 14px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.24);
+}
+
+:global(.react-tooltip-lite-up-arrow) {
+  border-top: 10px solid $darkText;
+}

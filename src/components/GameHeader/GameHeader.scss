@@ -1,0 +1,12 @@
+@import '../../Constants/styles.scss';
+
+.outerGameHeader {
+  display: grid;
+  grid-template-columns: 1fr 928px 1fr;
+  background-color: $darkText;
+  grid-column: 1 / -1;
+}
+
+.innerGameHeader {
+  grid-column: 2 / -2;
+}

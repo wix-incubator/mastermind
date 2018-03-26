@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ITech } from '../../types/tech';
+import * as classnames from 'classnames';
+import Tooltip from 'react-tooltip-lite';
 const styles = require('./Techs.scss');
 
 interface IProps {
@@ -13,19 +15,18 @@ export default class Techs extends React.PureComponent<IProps> {
     return techIds.map(techId => {
       const tech = techs[techId];
       return (
-        <div key={tech.id}>
-          <img className={styles.techIcon} src={tech.icon} />
-        </div>
+        <Tooltip key={tech.id} content={tech.name} styles={{ marginRight: 22 }}>
+          <a href={tech.homepage} target={'_blank'} className={styles.link}>
+            <div className={styles.iconContainer}>
+              <i className={classnames(tech.icon, styles.techIcon)} />
+            </div>
+          </a>
+        </Tooltip>
       );
     });
   }
 
   render() {
-    return (
-      <React.Fragment>
-        <span className={styles.header}>Technologies Used</span>
-        <div className={styles.iconsContainer}>{this.renderTechs()}</div>
-      </React.Fragment>
-    );
+    return <div className={styles.iconsContainer}>{this.renderTechs()}</div>;
   }
 }

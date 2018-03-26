@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import reduxCornell from 'redux-cornell';
+import { techs } from '../../Constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
   initialState: {
+    devs: {},
     games: {
       sorted: ['1a2b3c'],
       data: {
@@ -14,33 +16,11 @@ const { selectors, actions, superReducer } = reduxCornell({
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           developerGithubId: 'eyaleizenberg',
           url: 'https://io.github.com/minesweeper',
-          techIds: ['react', 'redux', 'typescript']
+          techIds: ['react', 'html5', 'sass', 'typescript']
         }
       }
     },
-    techs: {
-      data: {
-        react: {
-          id: 'react',
-          name: 'React',
-          icon:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-          homepage: 'https://reactjs.org/'
-        },
-        redux: {
-          id: 'redux',
-          name: 'Redux',
-          icon:
-            'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png'
-        },
-        typescript: {
-          id: 'typescript',
-          name: 'Typescript',
-          icon:
-            'https://cloud.githubusercontent.com/assets/10656223/15247118/e71dc6a2-1909-11e6-9b90-ae86204f41c3.png'
-        }
-      }
-    }
+    techs
   }
 });
 
