@@ -1,0 +1,9 @@
+@import '../../Constants/styles.scss';
+
+.buttonContainer {
+  background-color: $radioActiveGreen;
+  border-radius: 99px;
+  @include Montserrat(16px);
+  color: $white;
+  padding: 10px 15px;
+}

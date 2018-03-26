@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 import { IDev } from '../../types/dev';
 import Tooltip from 'react-tooltip-lite';
+import Button from '../Button/Button';
+
 const styles = require('./DevDetails.scss');
 
 export default class DevDetails extends React.PureComponent<IDev> {
@@ -64,6 +66,7 @@ export default class DevDetails extends React.PureComponent<IDev> {
             {this.renderSocialLinks()}
           </div>
           <p className={styles.bio}>{bio}</p>
+          <Button>Donate</Button>
         </div>
       </div>
     );
