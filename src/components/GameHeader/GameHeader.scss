@@ -9,4 +9,26 @@
 
 .innerGameHeader {
   grid-column: 2 / -2;
+  padding: 21px 0;
+}
+
+.gameName {
+  @include Montserrat(24px);
+  color: $white;
+  margin-bottom: 5px;
+  display: inline-block
+}
+
+.text {
+  @include Lato(14px);
+  color: $white;
+  line-height: 1.29;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.devLink {
+  margin: 0 5px;
+  color: $radioActiveGreen;
 }

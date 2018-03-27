@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GameDetails from '../GameDetails/GameDetails';
 import { IGame } from '../../types/game';
-import GameHeader from '../GameHeader/GameHeader';
+import GameHeaderContainer from '../GameHeader/GameHeader.container';
 const styles = require('./Game.scss');
 
 export default class Game extends React.PureComponent<IGame> {
@@ -16,7 +16,7 @@ export default class Game extends React.PureComponent<IGame> {
             }
           />
         </div>
-        <GameHeader />
+        <GameHeaderContainer game={this.props} />
         <GameDetails {...this.props} />
       </React.Fragment>
     );
