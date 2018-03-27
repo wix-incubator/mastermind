@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import reduxCornell from 'redux-cornell';
-import { techs } from '../../Constants/techData';
+import { techs } from '../../constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
   initialState: {

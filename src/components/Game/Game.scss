@@ -1,4 +1,4 @@
-@import '../../Constants/styles.scss';
+@import '../../styles/styles.scss';
 
 .gameContainer {
   background-color: $black;
@@ -10,7 +10,6 @@
 }
 
 .game {
-  background-color: $white;
   width: 768px;
   height: 432px;
 }

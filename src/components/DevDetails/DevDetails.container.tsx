@@ -4,7 +4,7 @@ import DevDetails from './DevDetails';
 import { selectors } from '../../redux/reducers';
 import { IDev } from '../../types/dev';
 import { IState } from '../../types/state';
-import { fetchDev } from '../../Actions/devActions';
+import { fetchDev } from '../../actions/devActions';
 
 const { getDevsData } = selectors;
 

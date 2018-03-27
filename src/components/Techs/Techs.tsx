@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITech } from '../../types/tech';
 import * as classnames from 'classnames';
-import Tooltip from 'react-tooltip-lite';
+import { Tooltip } from 'react-tippy';
 const styles = require('./Techs.scss');
 
 interface IProps {
@@ -15,7 +15,7 @@ export default class Techs extends React.PureComponent<IProps> {
     return techIds.map(techId => {
       const tech = techs[techId];
       return (
-        <Tooltip key={tech.id} content={tech.name} styles={{ marginRight: 22 }}>
+        <Tooltip key={tech.id} title={tech.name} arrow>
           <a href={tech.homepage} target={'_blank'} className={styles.link}>
             <div className={styles.iconContainer}>
               <i className={classnames(tech.icon, styles.techIcon)} />

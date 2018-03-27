@@ -1,2 +1,3 @@
 declare module 'redux-cornell';
-declare module 'react-tooltip-lite';
+declare module 'react-tippy';
+declare module 'react-popover';

@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './redux/store/configureStore';
 import Layout from './components/Layout/Layout';
-import './global.scss';
+import './styles/tippy.scss';
+import './styles/global.scss';
 
 const store = configureStore({});
 
