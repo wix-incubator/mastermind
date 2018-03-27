@@ -1,8 +1,10 @@
 import * as React from 'react';
+import * as classnames from 'classnames';
 const styles = require('./Button.scss');
 
 interface IProps {
-  children: string;
+  children: string | JSX.Element;
+  className?: string;
 }
 
 export default class Button extends React.Component<IProps> {
@@ -11,6 +13,12 @@ export default class Button extends React.Component<IProps> {
   }
 
   render() {
-    return <div className={styles.buttonContainer}>{this.props.children}</div>;
+    const { className, children } = this.props;
+
+    return (
+      <div className={classnames(styles.buttonContainer, className)}>
+        {children}
+      </div>
+    );
   }
 }

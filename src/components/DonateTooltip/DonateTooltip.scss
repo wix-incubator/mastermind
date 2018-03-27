@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85px;
+  padding: 10px 0;
+}
+
+.paypalButton {
+  background-color: #102f82;
+  padding: 10px 30px;
+}
+
+.patreonButton {
+  background-color: #f96854;
+  padding: 6px 26px;
+}
+
+.paypal {
+  object-fit: cover;
+}

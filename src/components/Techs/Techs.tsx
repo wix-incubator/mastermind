@@ -15,7 +15,12 @@ export default class Techs extends React.PureComponent<IProps> {
     return techIds.map(techId => {
       const tech = techs[techId];
       return (
-        <Tooltip key={tech.id} title={tech.name} arrow>
+        <Tooltip
+          key={tech.id}
+          title={tech.name}
+          arrow
+          style={{ marginRight: 22 }}
+        >
           <a href={tech.homepage} target={'_blank'} className={styles.link}>
             <div className={styles.iconContainer}>
               <i className={classnames(tech.icon, styles.techIcon)} />

@@ -550,7 +550,7 @@
 .tippy-tooltip {
   position: relative;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 8px;
   @include Lato(14px);
   padding: .4rem .8rem;
   text-align: center;
@@ -558,6 +558,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #333;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.24);
 }
 
 .tippy-tooltip--small {
