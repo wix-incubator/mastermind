@@ -5,4 +5,6 @@ export interface IGame {
   url: string;
   keyPointsOfInterest: string;
   techIds: string[];
+  paypalUsername?: string;
+  patreonUsername?: string;
 }

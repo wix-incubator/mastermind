@@ -3,10 +3,15 @@ import { Tooltip } from 'react-tippy';
 import Button from '../Button/Button';
 import DonateTooltip from '../DonateTooltip/DonateTooltip';
 
-export default class DonateButton extends React.PureComponent {
-  render() {
+interface IProps {
+  paypalUsername?: string;
+  patreonUsername?: string;
+}
+
+export default class DonateButton extends React.PureComponent<IProps> {
+  render(): JSX.Element {
     return (
-      <Tooltip html={<DonateTooltip />} arrow interactive>
+      <Tooltip html={<DonateTooltip {...this.props} />} arrow interactive>
         <Button>Donate</Button>
       </Tooltip>
     );

@@ -5,6 +5,7 @@ const styles = require('./Button.scss');
 interface IProps {
   children: string | JSX.Element;
   className?: string;
+  onClick?: () => void;
 }
 
 export default class Button extends React.Component<IProps> {
@@ -13,10 +14,13 @@ export default class Button extends React.Component<IProps> {
   }
 
   render() {
-    const { className, children } = this.props;
+    const { className, children, onClick } = this.props;
 
     return (
-      <div className={classnames(styles.buttonContainer, className)}>
+      <div
+        className={classnames(styles.buttonContainer, className)}
+        onClick={onClick}
+      >
         {children}
       </div>
     );

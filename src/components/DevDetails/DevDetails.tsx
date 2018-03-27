@@ -6,7 +6,17 @@ import DonateButton from '../DonateButton/DonateButton';
 
 const styles = require('./DevDetails.scss');
 
-export default class DevDetails extends React.PureComponent<IDev> {
+interface IProps {
+  dev: IDev;
+  paypalUsername?: string;
+  patreonUsername?: string;
+}
+
+export default class DevDetails extends React.PureComponent<IProps> {
+  public static defaultProps: Partial<IProps> = {
+    dev: {} as IDev
+  };
+
   renderSocialLink({
     url,
     iconName,
@@ -31,7 +41,7 @@ export default class DevDetails extends React.PureComponent<IDev> {
   }
 
   renderSocialLinks() {
-    const { html_url, blog } = this.props;
+    const { html_url, blog } = this.props.dev;
     const isTwitter = blog.match(/twitter/);
 
     return (
@@ -50,8 +60,23 @@ export default class DevDetails extends React.PureComponent<IDev> {
     );
   }
 
+  renderDonateButton() {
+    const { paypalUsername, patreonUsername } = this.props;
+
+    if (paypalUsername || patreonUsername) {
+      return (
+        <DonateButton
+          paypalUsername={paypalUsername}
+          patreonUsername={patreonUsername}
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
-    const { avatar_url, name, bio } = this.props;
+    const { avatar_url, name, bio } = this.props.dev;
 
     if (!name) {
       return null;
@@ -66,7 +91,7 @@ export default class DevDetails extends React.PureComponent<IDev> {
             {this.renderSocialLinks()}
           </div>
           <p className={styles.bio}>{bio}</p>
-          <DonateButton />
+          {this.renderDonateButton()}
         </div>
       </div>
     );

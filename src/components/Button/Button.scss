@@ -1,6 +1,7 @@
 @import '../../styles/styles.scss';
 
 .buttonContainer {
+  cursor: pointer;
   background-color: $radioActiveGreen;
   border-radius: 99px;
   @include Montserrat(16px);

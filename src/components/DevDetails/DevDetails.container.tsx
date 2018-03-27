@@ -12,6 +12,8 @@ interface IProps {
   dev: IDev;
   fetchDev: (developerGithubId: string) => any;
   developerGithubId: string;
+  paypalUsername?: string;
+  patreonUsername?: string;
 }
 
 class DevDetailsContainer extends React.PureComponent<IProps> {
@@ -21,7 +23,14 @@ class DevDetailsContainer extends React.PureComponent<IProps> {
   }
 
   render() {
-    return <DevDetails {...this.props.dev} />;
+    const { dev, paypalUsername, patreonUsername } = this.props;
+    return (
+      <DevDetails
+        dev={dev}
+        paypalUsername={paypalUsername}
+        patreonUsername={patreonUsername}
+      />
+    );
   }
 }
 

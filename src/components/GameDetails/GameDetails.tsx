@@ -11,7 +11,9 @@ export default class GameDetails extends React.PureComponent<IGame> {
       description,
       techIds,
       keyPointsOfInterest,
-      developerGithubId
+      developerGithubId,
+      patreonUsername,
+      paypalUsername
     } = this.props;
 
     return (
@@ -25,7 +27,11 @@ export default class GameDetails extends React.PureComponent<IGame> {
             <DetailHeader text={'Key Points Of Interest'} />
             <p className={styles.text}>{keyPointsOfInterest}</p>
           </div>
-          <DevDetailsContainer developerGithubId={developerGithubId} />
+          <DevDetailsContainer
+            developerGithubId={developerGithubId}
+            patreonUsername={patreonUsername}
+            paypalUsername={paypalUsername}
+          />
         </div>
       </div>
     );
