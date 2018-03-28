@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as classnames from 'classnames';
 import Star from '../Star/Star';
 import IconHolder from '../IconHolder/IconHolder';
 import DonateButton from '../DonateButton/DonateButton';
@@ -18,15 +20,50 @@ interface IProps {
   patreonUsername?: string;
 }
 
-export default class GameHeader extends React.PureComponent<IProps> {
-  renderStars() {
+interface InnerState {
+  collapsed: boolean;
+}
+
+export default class GameHeader extends React.PureComponent<
+  IProps,
+  InnerState
+> {
+  private headerYOffset: number;
+
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      collapsed: false
+    };
+  }
+
+  handleScroll = () => {
+    const collapsed = window.scrollY - this.headerYOffset > 0;
+    this.setState({
+      collapsed
+    });
+  };
+
+  componentDidMount() {
+    const headerRef = ReactDOM.findDOMNode(this.refs.header) as HTMLDivElement;
+    setTimeout(() => {
+      this.headerYOffset = headerRef.offsetTop;
+      window.addEventListener('scroll', this.handleScroll);
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  renderStars(): JSX.Element[] {
     const { rating } = this.props;
     return starArray.map(num => {
       return <Star key={num} highlighted={num <= (rating || 0)} />;
     });
   }
 
-  renderShareButton() {
+  renderShareButton(): JSX.Element {
     return (
       <Tooltip
         interactive
@@ -41,47 +78,82 @@ export default class GameHeader extends React.PureComponent<IProps> {
     );
   }
 
+  renderDonateOrBackButton() {
+    const { paypalUsername, patreonUsername } = this.props;
+    return (
+      <DonateButton
+        paypalUsername={paypalUsername}
+        patreonUsername={patreonUsername}
+        className={styles.donateButtonText}
+      />
+    );
+  }
+
   render(): JSX.Element {
-    const {
-      gameName,
-      name,
-      createdDate,
-      paypalUsername,
-      patreonUsername
-    } = this.props;
+    const { gameName, name, createdDate } = this.props;
+    const { collapsed } = this.state;
 
     return (
-      <div className={styles.outerGameHeader}>
-        <div className={styles.innerGameHeader}>
-          <div className={styles.leftSide}>
-            <span className={styles.gameName}>{gameName}</span>
-            <div className={styles.text}>
-              <span>By</span>
-              <a href="#devStuff" className={styles.devLink}>
-                {name}
-              </a>
-              <span>{`on ${createdDate}`}</span>
+      <React.Fragment>
+        <div
+          className={classnames(styles.placeHolder, {
+            [styles.collapsed]: collapsed
+          })}
+        >
+          <div
+            className={classnames(styles.outerGameHeader, {
+              [styles.collapsed]: collapsed
+            })}
+            ref={'header'}
+          >
+            <div className={styles.innerGameHeader}>
+              <div className={styles.leftSide}>
+                <span
+                  className={classnames(styles.gameName, {
+                    [styles.collapsed]: collapsed
+                  })}
+                >
+                  {gameName}
+                </span>
+                <div
+                  className={classnames(styles.text, styles.devContainer, {
+                    [styles.collapsed]: collapsed
+                  })}
+                >
+                  <span>by</span>
+                  <a href="#devStuff" className={styles.devLink}>
+                    {name}
+                  </a>
+                  <span>{`on ${createdDate}`}</span>
+                </div>
+                <div
+                  className={classnames(styles.text, styles.ratingsContainer, {
+                    [styles.collapsed]: collapsed
+                  })}
+                >
+                  <span>Rating:</span>
+                  {this.renderStars()}
+                </div>
+              </div>
+              <div className={styles.rightSide}>
+                <div
+                  className={classnames(styles.iconsContainer, {
+                    [styles.collapsed]: collapsed
+                  })}
+                >
+                  {this.renderShareButton()}
+                  <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
+                    <IconHolder>
+                      <img src={megaphone} className={styles.megaphoneIcon} />
+                    </IconHolder>
+                  </Tooltip>
+                </div>
+                {this.renderDonateOrBackButton()}
+              </div>
             </div>
-            <div className={styles.text}>
-              <span>Rating:</span>
-              {this.renderStars()}
-            </div>
-          </div>
-          <div className={styles.rightSide}>
-            {this.renderShareButton()}
-            <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
-              <IconHolder>
-                <img src={megaphone} className={styles.megaphoneIcon} />
-              </IconHolder>
-            </Tooltip>
-            <DonateButton
-              paypalUsername={paypalUsername}
-              patreonUsername={patreonUsername}
-              className={styles.donateButtonText}
-            />
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

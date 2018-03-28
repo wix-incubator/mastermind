@@ -5,8 +5,9 @@
   border-radius: 99px;
   @include Montserrat(16px);
   color: $white;
-  padding: 11px 24px;
+  padding: 9px 24px;
   display: flex;
+  line-height: 1.5;
   align-items: center;
   justify-content: center;
 }

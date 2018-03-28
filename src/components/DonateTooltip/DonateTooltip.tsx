@@ -61,6 +61,7 @@ export default class DonateTooltip extends React.PureComponent<IProps> {
         <a
           href={`https://www.patreon.com/bePatron?c=${patreonUsername}`}
           target="_blank"
+          className={styles.patreonLink}
         >
           <img src={patreon} width={67} />
         </a>

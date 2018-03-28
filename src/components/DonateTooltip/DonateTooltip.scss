@@ -9,13 +9,17 @@
 
 .paypalButton {
   background-color: #102f82;
-  padding: 13px 30px;
+  padding: 10px 30px;
   cursor: pointer;
 }
 
 .patreonButton {
   background-color: #f96854;
-  padding: 7px 26px;
+  padding: 6px 26px;
+}
+
+.patreonLink {
+  height: 24px;
 }
 
 .paypal {
@@ -25,3 +29,4 @@
 .paypalForm {
   display: none;
 }
+
