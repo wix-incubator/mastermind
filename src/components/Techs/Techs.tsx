@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITech } from '../../types/tech';
 import * as classnames from 'classnames';
 import { Tooltip } from 'react-tippy';
+import IconHolder from '../IconHolder/IconHolder';
 const styles = require('./Techs.scss');
 
 interface IProps {
@@ -22,9 +23,9 @@ export default class Techs extends React.PureComponent<IProps> {
           style={{ marginRight: 22 }}
         >
           <a href={tech.homepage} target={'_blank'} className={styles.link}>
-            <div className={styles.iconContainer}>
+            <IconHolder>
               <i className={classnames(tech.icon, styles.techIcon)} />
-            </div>
+            </IconHolder>
           </a>
         </Tooltip>
       );

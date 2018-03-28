@@ -1,5 +1,10 @@
 import * as React from 'react';
 import Star from '../Star/Star';
+import IconHolder from '../IconHolder/IconHolder';
+import DonateButton from '../DonateButton/DonateButton';
+import Tooltip from 'react-tippy';
+const share = require('../../assets/images/share.svg');
+const megaphone = require('../../assets/images/megaphone.svg');
 const styles = require('./GameHeader.scss');
 const starArray = [1, 2, 3, 4, 5];
 
@@ -21,7 +26,13 @@ export default class GameHeader extends React.PureComponent<IProps> {
   }
 
   render(): JSX.Element {
-    const { gameName, name, createdDate } = this.props;
+    const {
+      gameName,
+      name,
+      createdDate,
+      paypalUsername,
+      patreonUsername
+    } = this.props;
 
     return (
       <div className={styles.outerGameHeader}>
@@ -40,7 +51,23 @@ export default class GameHeader extends React.PureComponent<IProps> {
               {this.renderStars()}
             </div>
           </div>
-          <div className={styles.rightSite} />
+          <div className={styles.rightSide}>
+            <Tooltip title={'Share'} arrow style={{ marginRight: 22 }}>
+              <IconHolder>
+                <img src={share} className={styles.shareIcon} />
+              </IconHolder>
+            </Tooltip>
+            <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
+              <IconHolder>
+                <img src={megaphone} className={styles.megaphoneIcon} />
+              </IconHolder>
+            </Tooltip>
+            <DonateButton
+              paypalUsername={paypalUsername}
+              patreonUsername={patreonUsername}
+              className={styles.donateButtonText}
+            />
+          </div>
         </div>
       </div>
     );

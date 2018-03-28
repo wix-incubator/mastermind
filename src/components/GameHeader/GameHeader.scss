@@ -10,6 +10,8 @@
 .innerGameHeader {
   grid-column: 2 / -2;
   padding: 21px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .gameName {
@@ -31,4 +33,22 @@
 .devLink {
   margin: 0 5px;
   color: $radioActiveGreen;
+}
+
+.donateButtonText {
+  color: $black;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+}
+
+.megaphoneIcon {
+  width: 22px;
+  transform: rotate(19deg);
+}
+
+.shareIcon {
+  width: 18px;
 }

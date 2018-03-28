@@ -6,13 +6,14 @@ import DonateTooltip from '../DonateTooltip/DonateTooltip';
 interface IProps {
   paypalUsername?: string;
   patreonUsername?: string;
+  className?: string;
 }
 
 export default class DonateButton extends React.PureComponent<IProps> {
   render(): JSX.Element {
     return (
       <Tooltip html={<DonateTooltip {...this.props} />} arrow interactive>
-        <Button>Donate</Button>
+        <Button className={this.props.className}>Donate</Button>
       </Tooltip>
     );
   }
