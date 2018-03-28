@@ -2,7 +2,8 @@ import * as React from 'react';
 import Star from '../Star/Star';
 import IconHolder from '../IconHolder/IconHolder';
 import DonateButton from '../DonateButton/DonateButton';
-import Tooltip from 'react-tippy';
+import { Tooltip } from 'react-tippy';
+import ShareTooltip from '../ShareTooltip/ShareTooltip';
 const share = require('../../assets/images/share.svg');
 const megaphone = require('../../assets/images/megaphone.svg');
 const styles = require('./GameHeader.scss');
@@ -23,6 +24,21 @@ export default class GameHeader extends React.PureComponent<IProps> {
     return starArray.map(num => {
       return <Star key={num} highlighted={num <= (rating || 0)} />;
     });
+  }
+
+  renderShareButton() {
+    return (
+      <Tooltip
+        interactive
+        arrow
+        style={{ marginRight: 22 }}
+        html={<ShareTooltip />}
+      >
+        <IconHolder>
+          <img src={share} className={styles.shareIcon} />
+        </IconHolder>
+      </Tooltip>
+    );
   }
 
   render(): JSX.Element {
@@ -52,11 +68,7 @@ export default class GameHeader extends React.PureComponent<IProps> {
             </div>
           </div>
           <div className={styles.rightSide}>
-            <Tooltip title={'Share'} arrow style={{ marginRight: 22 }}>
-              <IconHolder>
-                <img src={share} className={styles.shareIcon} />
-              </IconHolder>
-            </Tooltip>
+            {this.renderShareButton()}
             <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
               <IconHolder>
                 <img src={megaphone} className={styles.megaphoneIcon} />

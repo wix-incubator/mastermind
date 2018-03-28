@@ -1,12 +1,11 @@
 @import '../../styles/styles.scss';
 
 .buttonContainer {
-  cursor: pointer;
   background-color: $radioActiveGreen;
   border-radius: 99px;
   @include Montserrat(16px);
   color: $white;
-  padding: 10px 24px;
+  padding: 11px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
