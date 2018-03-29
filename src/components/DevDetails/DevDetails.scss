@@ -17,7 +17,7 @@
   border-radius: 50%;
 }
 
-.name {
+.devName {
   @include Montserrat(20px);
   color: $standardText;
   line-height: 1.5;
@@ -40,8 +40,24 @@
   text-decoration-line: none;
 }
 
-.bio {
+.bioText {
   @include Lato(14px);
   line-height: 20px;
   margin-bottom: 24px;
+}
+
+.reportIssue {
+  @include Lato(14px);
+  color: $radioActiveGreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 11px;
+  cursor: pointer;
+}
+
+.reportFlag {
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
 }

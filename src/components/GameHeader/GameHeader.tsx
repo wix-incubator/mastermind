@@ -70,7 +70,7 @@ export default class GameHeader extends React.PureComponent<
       <Tooltip
         interactive
         arrow
-        style={{ marginRight: 22 }}
+        style={{ marginRight: 12 }}
         html={<ShareTooltip />}
       >
         <IconHolder>
@@ -166,7 +166,7 @@ export default class GameHeader extends React.PureComponent<
           })}
         >
           {this.renderShareButton()}
-          <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
+          <Tooltip title={'Feedback'} arrow>
             <IconHolder>
               <img src={megaphone} className={styles.megaphoneIcon} />
             </IconHolder>

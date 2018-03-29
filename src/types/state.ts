@@ -4,6 +4,9 @@ import { IGame } from './game';
 export interface IState {
   superReducer: {
     devs: { [key: string]: IDev };
+    keyPointsOfInterest: {
+      data: { [key: string]: string };
+    };
     games: {
       sorted: string[];
       data: { [key: string]: IGame };

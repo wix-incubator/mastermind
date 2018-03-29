@@ -1,4 +1,18 @@
-.footer {
+@import '../../styles/styles.scss';
+
+.outerFooter {
+  display: grid;
+  grid-template-columns: 1fr 928px 1fr;
   grid-column: 1 / -1;
-  background-color: #000000;
+  background-color: $darkText;
 }
+
+.innerFooter {
+  grid-column: 2 / -2;
+  display: flex;
+  color: $white;
+  align-items: center;
+  justify-content: space-between;
+  @include Lato(14px);
+}
+

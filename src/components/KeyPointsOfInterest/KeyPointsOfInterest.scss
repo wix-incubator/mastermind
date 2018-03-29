@@ -1,0 +1,7 @@
+@import '../../styles/styles.scss';
+
+.container {
+  @include Lato(16px);
+  line-height: 24px;
+  color: $standardText;
+}
