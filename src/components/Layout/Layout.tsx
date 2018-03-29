@@ -7,7 +7,7 @@ const styles = require('./Layout.scss');
 export default class Layout extends React.PureComponent {
   render() {
     return (
-      <div className={styles.layoutContainer}>
+      <div id="top" className={styles.layoutContainer}>
         <Header />
         <GameContainer id={'1a2b3c'} />
         <Footer />

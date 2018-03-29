@@ -7,13 +7,27 @@ interface IProps {
   paypalUsername?: string;
   patreonUsername?: string;
   className?: string;
+  style?: { [key: string]: any };
+  disabled?: boolean;
 }
 
 export default class DonateButton extends React.PureComponent<IProps> {
+  public static defaultProps: Partial<IProps> = {
+    disabled: false
+  };
+
   render(): JSX.Element {
+    const { className, style, disabled } = this.props;
+
     return (
-      <Tooltip html={<DonateTooltip {...this.props} />} arrow interactive>
-        <Button className={this.props.className}>Donate</Button>
+      <Tooltip
+        html={<DonateTooltip {...this.props} />}
+        arrow
+        interactive
+        style={style}
+        disabled={disabled}
+      >
+        <Button className={className}>Donate</Button>
       </Tooltip>
     );
   }

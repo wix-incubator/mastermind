@@ -6,6 +6,8 @@ import IconHolder from '../IconHolder/IconHolder';
 import DonateButton from '../DonateButton/DonateButton';
 import { Tooltip } from 'react-tippy';
 import ShareTooltip from '../ShareTooltip/ShareTooltip';
+import Button from '../Button/Button';
+import scrollToElement from 'scroll-to-element';
 const share = require('../../assets/images/share.svg');
 const megaphone = require('../../assets/images/megaphone.svg');
 const styles = require('./GameHeader.scss');
@@ -78,19 +80,100 @@ export default class GameHeader extends React.PureComponent<
     );
   }
 
-  renderDonateOrBackButton() {
+  navigateToTop() {
+    scrollToElement('#top');
+  }
+
+  renderDonateOrBackButton(): JSX.Element {
     const { paypalUsername, patreonUsername } = this.props;
+    const { collapsed } = this.state;
+
     return (
-      <DonateButton
-        paypalUsername={paypalUsername}
-        patreonUsername={patreonUsername}
-        className={styles.donateButtonText}
-      />
+      <React.Fragment>
+        <Button
+          onClick={this.navigateToTop}
+          className={classnames(styles.backButton, {
+            [styles.hidden]: !collapsed
+          })}
+        >
+          Back To Game
+        </Button>
+        <DonateButton
+          paypalUsername={paypalUsername}
+          patreonUsername={patreonUsername}
+          className={classnames(styles.donateButton, {
+            [styles.hidden]: collapsed
+          })}
+          style={{ position: 'absolute', right: 0 }}
+          disabled={collapsed}
+        />
+      </React.Fragment>
+    );
+  }
+
+  navigateToGameDetails() {
+    scrollToElement('gameDetails');
+  }
+
+  renderLeftSide(): JSX.Element {
+    const { gameName, name, createdDate } = this.props;
+    const { collapsed } = this.state;
+
+    return (
+      <div className={styles.leftSide}>
+        <span
+          className={classnames(styles.gameName, {
+            [styles.collapsed]: collapsed
+          })}
+        >
+          {gameName}
+        </span>
+        <div
+          className={classnames(styles.text, styles.devContainer, {
+            [styles.collapsed]: collapsed
+          })}
+        >
+          <span>by</span>
+          <span onClick={this.navigateToGameDetails} className={styles.devLink}>
+            {name}
+          </span>
+          <span>{`on ${createdDate}`}</span>
+        </div>
+        <div
+          className={classnames(styles.text, styles.ratingsContainer, {
+            [styles.collapsed]: collapsed
+          })}
+        >
+          <span>Rating:</span>
+          {this.renderStars()}
+        </div>
+      </div>
+    );
+  }
+
+  renderRightSide(): JSX.Element {
+    const { collapsed } = this.state;
+
+    return (
+      <div className={styles.rightSide}>
+        <div
+          className={classnames(styles.iconsContainer, {
+            [styles.collapsed]: collapsed
+          })}
+        >
+          {this.renderShareButton()}
+          <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
+            <IconHolder>
+              <img src={megaphone} className={styles.megaphoneIcon} />
+            </IconHolder>
+          </Tooltip>
+        </div>
+        {this.renderDonateOrBackButton()}
+      </div>
     );
   }
 
   render(): JSX.Element {
-    const { gameName, name, createdDate } = this.props;
     const { collapsed } = this.state;
 
     return (
@@ -107,49 +190,8 @@ export default class GameHeader extends React.PureComponent<
             ref={'header'}
           >
             <div className={styles.innerGameHeader}>
-              <div className={styles.leftSide}>
-                <span
-                  className={classnames(styles.gameName, {
-                    [styles.collapsed]: collapsed
-                  })}
-                >
-                  {gameName}
-                </span>
-                <div
-                  className={classnames(styles.text, styles.devContainer, {
-                    [styles.collapsed]: collapsed
-                  })}
-                >
-                  <span>by</span>
-                  <a href="#devStuff" className={styles.devLink}>
-                    {name}
-                  </a>
-                  <span>{`on ${createdDate}`}</span>
-                </div>
-                <div
-                  className={classnames(styles.text, styles.ratingsContainer, {
-                    [styles.collapsed]: collapsed
-                  })}
-                >
-                  <span>Rating:</span>
-                  {this.renderStars()}
-                </div>
-              </div>
-              <div className={styles.rightSide}>
-                <div
-                  className={classnames(styles.iconsContainer, {
-                    [styles.collapsed]: collapsed
-                  })}
-                >
-                  {this.renderShareButton()}
-                  <Tooltip title={'Feedback'} arrow style={{ marginRight: 22 }}>
-                    <IconHolder>
-                      <img src={megaphone} className={styles.megaphoneIcon} />
-                    </IconHolder>
-                  </Tooltip>
-                </div>
-                {this.renderDonateOrBackButton()}
-              </div>
+              {this.renderLeftSide()}
+              {this.renderRightSide()}
             </div>
           </div>
         </div>

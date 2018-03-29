@@ -87,18 +87,43 @@ $animationTime: 400ms;
   color: $radioActiveGreen;
 }
 
-.donateButtonText {
-  color: $black;
-}
-
 .rightSide {
+  width: 405px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+%actionButton {
+  color: $black;
+  transition: opacity $animationTime ease-in-out;
+  z-index: 2;
+}
+
+.donateButton {
+  @extend %actionButton;
+}
+
+.backButton {
+  @extend %actionButton;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.donateButton, .backButton {
+  &.hidden {
+    opacity: 0;
+    z-index: 0;
+  }
 }
 
 .iconsContainer {
   display: flex;
   opacity: 1;
+  position: absolute;
+  left: 0;
   transition: opacity $animationTime ease-in-out;
   &.collapsed {
     opacity: 0;
@@ -113,3 +138,4 @@ $animationTime: 400ms;
 .shareIcon {
   width: 18px;
 }
+

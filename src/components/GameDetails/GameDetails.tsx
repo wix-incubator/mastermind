@@ -17,7 +17,7 @@ export default class GameDetails extends React.PureComponent<IGame> {
     } = this.props;
 
     return (
-      <div className={styles.outerGameDetails}>
+      <div id="gameDetails" className={styles.outerGameDetails}>
         <div className={styles.innerGameDetails}>
           <div className={styles.leftSide}>
             <DetailHeader text={'About Game'} />

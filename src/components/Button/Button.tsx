@@ -8,11 +8,7 @@ interface IProps {
   onClick?: () => void;
 }
 
-export default class Button extends React.Component<IProps> {
-  shouldComponentUpdate() {
-    return false;
-  }
-
+export default class Button extends React.PureComponent<IProps> {
   render() {
     const { className, children, onClick } = this.props;
 
