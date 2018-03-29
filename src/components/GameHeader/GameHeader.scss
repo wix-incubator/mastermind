@@ -82,9 +82,9 @@ $animationTime: 400ms;
 }
 
 .devLink {
-  text-decoration-line: none;
   margin: 0 5px;
   color: $radioActiveGreen;
+  cursor: pointer;
 }
 
 .rightSide {

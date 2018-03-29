@@ -81,7 +81,7 @@ export default class GameHeader extends React.PureComponent<
   }
 
   navigateToTop() {
-    scrollToElement('#top');
+    scrollToElement('#top', { duration: 800 });
   }
 
   renderDonateOrBackButton(): JSX.Element {
@@ -112,7 +112,11 @@ export default class GameHeader extends React.PureComponent<
   }
 
   navigateToGameDetails() {
-    scrollToElement('gameDetails');
+    scrollToElement('#gameDetails', {
+      duration: 800,
+      align: 'top',
+      offset: -113
+    });
   }
 
   renderLeftSide(): JSX.Element {
