@@ -42,7 +42,11 @@ class GameHeaderContainer extends React.PureComponent<IProps> {
     return (
       <React.Fragment>
         {isFeedbackModalVisible && (
-          <FeedbackModal name={name} onSend={sendFeedback} />
+          <FeedbackModal
+            name={name}
+            onSend={sendFeedback}
+            closeModal={toggleFeedbackModalIsVisible}
+          />
         )}
         <GameHeader
           gameName={gameName}

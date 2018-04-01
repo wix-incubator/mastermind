@@ -10,4 +10,8 @@
   line-height: 1.5;
   align-items: center;
   justify-content: center;
+  &.disabled {
+    pointer-events: none;
+    background-color: $socialIcons;
+  }
 }
