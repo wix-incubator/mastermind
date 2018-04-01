@@ -125,6 +125,7 @@ $animationTime: 400ms;
   position: absolute;
   left: 0;
   transition: opacity $animationTime ease-in-out;
+  z-index: 1;
   &.collapsed {
     opacity: 0;
   }

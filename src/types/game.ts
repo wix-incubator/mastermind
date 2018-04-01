@@ -4,6 +4,7 @@ export interface IGame {
   description: string;
   developerGithubId: string;
   url: string;
+  githubUrl: string;
   keyPointsOfInterestUrl: string;
   techIds: string[];
   createdDate: string;

@@ -1,16 +1,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import GameHeader from './GameHeader';
-import { selectors } from '../../redux/reducers';
+import FeedbackModal from '../FeedbackModal/FeedbackModal';
+import { selectors, actions } from '../../redux/reducers';
 import { IGame } from '../../types/game';
 import { IDev } from '../../types/dev';
 import { IState } from '../../types/state';
-
-const { getDevsData } = selectors;
+import { sendFeedback } from '../../actions/feedbackActions';
+const { getDevsData, getFeedbackModalIsVisible } = selectors;
+const { toggleFeedbackModalIsVisible } = actions;
 
 interface IProps {
   dev: IDev;
   game: IGame;
+  toggleFeedbackModalIsVisible: () => void;
+  sendFeedback: () => any;
+  isFeedbackModalVisible: boolean;
 }
 
 class GameHeaderContainer extends React.PureComponent<IProps> {
@@ -20,19 +25,36 @@ class GameHeaderContainer extends React.PureComponent<IProps> {
 
   render() {
     const {
-      game: { paypalUsername, patreonUsername, gameName, createdDate, rating },
+      toggleFeedbackModalIsVisible,
+      isFeedbackModalVisible,
+      sendFeedback,
+      game: {
+        paypalUsername,
+        patreonUsername,
+        gameName,
+        createdDate,
+        rating,
+        githubUrl
+      },
       dev: { name }
     } = this.props;
 
     return (
-      <GameHeader
-        gameName={gameName}
-        name={name}
-        paypalUsername={paypalUsername}
-        patreonUsername={patreonUsername}
-        createdDate={createdDate}
-        rating={rating}
-      />
+      <React.Fragment>
+        {isFeedbackModalVisible && (
+          <FeedbackModal name={name} onSend={sendFeedback} />
+        )}
+        <GameHeader
+          gameName={gameName}
+          name={name}
+          paypalUsername={paypalUsername}
+          patreonUsername={patreonUsername}
+          createdDate={createdDate}
+          rating={rating}
+          githubUrl={githubUrl}
+          toggleFeedbackModalIsVisible={toggleFeedbackModalIsVisible}
+        />
+      </React.Fragment>
     );
   }
 }
@@ -42,8 +64,12 @@ const mapStateToProps = (
   { game: { developerGithubId } }: { game: { developerGithubId: string } }
 ) => {
   return {
-    dev: getDevsData(state)[developerGithubId]
+    dev: getDevsData(state)[developerGithubId],
+    isFeedbackModalVisible: getFeedbackModalIsVisible(state)
   };
 };
 
-export default connect(mapStateToProps)(GameHeaderContainer);
+export default connect(mapStateToProps, {
+  toggleFeedbackModalIsVisible,
+  sendFeedback
+})(GameHeaderContainer);

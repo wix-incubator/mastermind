@@ -4,6 +4,9 @@ import { techs } from '../../constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
   initialState: {
+    feedbackModal: {
+      isVisible: false
+    },
     devs: {
       data: {}
     },
@@ -22,6 +25,7 @@ const { selectors, actions, superReducer } = reduxCornell({
             'https://gist.githubusercontent.com/eyaleizenberg/1d38da73f148dd4ceca62530ed23a3ca/raw/c30cf5e39bf21190d5b37e0a6e03f669c328f2a0/doom_description.md',
           developerGithubId: 'eyaleizenberg',
           url: 'https://io.github.com/minesweeper',
+          githubUrl: 'https://github.com/eyaleizenberg/minesweeper',
           techIds: ['react', 'html5', 'sass', 'typescript'],
           paypalUsername: 'iz.eyal@gmail.com',
           patreonUsername: '660835',

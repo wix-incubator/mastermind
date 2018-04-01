@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tippy';
 import ShareTooltip from '../ShareTooltip/ShareTooltip';
 import Button from '../Button/Button';
 import scrollToElement from 'scroll-to-element';
+import FeedbackTooltip from '../FeedbackTooltip/FeedbackTooltip';
 const share = require('../../assets/images/share.svg');
 const megaphone = require('../../assets/images/megaphone.svg');
 const styles = require('./GameHeader.scss');
@@ -17,9 +18,11 @@ interface IProps {
   gameName: string;
   name: string;
   createdDate: string;
+  githubUrl: string;
   rating?: number;
   paypalUsername?: string;
   patreonUsername?: string;
+  toggleFeedbackModalIsVisible: () => void;
 }
 
 interface InnerState {
@@ -66,9 +69,12 @@ export default class GameHeader extends React.PureComponent<
   }
 
   renderShareButton(): JSX.Element {
+    const { collapsed } = this.state;
+
     return (
       <Tooltip
         interactive
+        disabled={collapsed}
         arrow
         style={{ marginRight: 12 }}
         html={<ShareTooltip />}
@@ -155,6 +161,28 @@ export default class GameHeader extends React.PureComponent<
     );
   }
 
+  renderFeedbackButton() {
+    const { collapsed } = this.state;
+
+    return (
+      <Tooltip
+        arrow
+        interactive
+        disabled={collapsed}
+        html={
+          <FeedbackTooltip
+            githubUrl={this.props.githubUrl}
+            onEmailClick={this.props.toggleFeedbackModalIsVisible}
+          />
+        }
+      >
+        <IconHolder>
+          <img src={megaphone} className={styles.megaphoneIcon} />
+        </IconHolder>
+      </Tooltip>
+    );
+  }
+
   renderRightSide(): JSX.Element {
     const { collapsed } = this.state;
 
@@ -166,11 +194,7 @@ export default class GameHeader extends React.PureComponent<
           })}
         >
           {this.renderShareButton()}
-          <Tooltip title={'Feedback'} arrow>
-            <IconHolder>
-              <img src={megaphone} className={styles.megaphoneIcon} />
-            </IconHolder>
-          </Tooltip>
+          {this.renderFeedbackButton()}
         </div>
         {this.renderDonateOrBackButton()}
       </div>
