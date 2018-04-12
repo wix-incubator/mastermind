@@ -9,12 +9,7 @@ export default class Game extends React.PureComponent<IGame> {
     return (
       <React.Fragment>
         <div className={styles.gameContainer}>
-          <img
-            className={styles.game}
-            src={
-              'https://raw.githubusercontent.com/wix-incubator/mastermind/master/public/doom.png'
-            }
-          />
+          <img className={styles.game} src={this.props.imageUrl} />
         </div>
         <GameHeaderContainer game={this.props} />
         <GameDetails {...this.props} />

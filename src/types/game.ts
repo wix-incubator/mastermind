@@ -11,4 +11,6 @@ export interface IGame {
   paypalUsername?: string;
   patreonUsername?: string;
   rating?: number;
+  thumbnailUrl: string;
+  imageUrl: string;
 }
