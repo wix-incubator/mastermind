@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import reduxCornell from 'redux-cornell';
+import { routerReducer } from 'react-router-redux';
 import { techs } from '../../constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
@@ -30,7 +31,11 @@ const { selectors, actions, superReducer } = reduxCornell({
           paypalUsername: 'iz.eyal@gmail.com',
           patreonUsername: '660835',
           createdDate: 'Mar 25, 2018',
-          rating: 3
+          rating: 3,
+          thumbnailUrl:
+            'https://raw.githubusercontent.com/wix-incubator/mastermind/master/public/doom_thumb.png',
+          imageUrl:
+            'https://raw.githubusercontent.com/wix-incubator/mastermind/master/public/doom.png'
         }
       }
     },
@@ -40,6 +45,9 @@ const { selectors, actions, superReducer } = reduxCornell({
 
 export { selectors, actions };
 
-const rootReducer = combineReducers({ superReducer });
+const rootReducer = combineReducers({
+  superReducer,
+  routing: routerReducer
+});
 
 export default rootReducer;

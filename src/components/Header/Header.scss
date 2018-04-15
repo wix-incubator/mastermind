@@ -16,4 +16,5 @@
 .header {
   @include Montserrat(24px);
   color: $white;
+  text-decoration-line: none;
 }

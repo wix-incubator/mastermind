@@ -4,11 +4,16 @@ import Game from './Game';
 import { selectors } from '../../redux/reducers';
 import { IGame } from '../../types/game';
 import { IState } from '../../types/state';
-
+import { match } from 'react-router';
 const { getGamesData } = selectors;
+
+interface MatchParams {
+  id: string;
+}
 
 interface IProps {
   game: IGame;
+  match: match<MatchParams>;
 }
 
 class GameContainer extends React.PureComponent<IProps> {
@@ -17,7 +22,11 @@ class GameContainer extends React.PureComponent<IProps> {
   }
 }
 
-const mapStateToProps = (state: IState, { id }: { id: string }) => {
+const mapStateToProps = (
+  state: IState,
+  { match }: { match: match<MatchParams> }
+) => {
+  const { id } = match.params;
   return {
     game: getGamesData(state)[id]
   };
