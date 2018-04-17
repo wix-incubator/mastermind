@@ -1,0 +1,17 @@
+@import '../../styles/styles.scss';
+
+.container {
+  grid-column: 2 / -2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+  padding: 91px 0 86px 0;
+}
+
+.title {
+  @include Montserrat(24px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: $black;
+}

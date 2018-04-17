@@ -12,11 +12,12 @@
   flex-direction: column;
   color: $white;
   align-items: center;
-  padding: 86px 0;
+  padding: 79px 0 86px 0;
 }
 
 .title {
   @include Montserrat(36px);
+  font-weight: 600;
 }
 
 .subtitle {
