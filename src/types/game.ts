@@ -3,6 +3,7 @@ export interface IGame {
   gameName: string;
   description: string;
   developerGithubId: string;
+  developerName: string;
   url: string;
   githubUrl: string;
   keyPointsOfInterestUrl: string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Showcase from '../Showcase/Showcase';
+import ShowcaseContainer from '../Showcase/Showcase.container';
 const styles = require('./Welcome.scss');
 
 export default class Welcome extends React.PureComponent {
@@ -14,7 +14,7 @@ export default class Welcome extends React.PureComponent {
             developing your own games, feel free to read the contributors guide.
           </p>
         </div>
-        <Showcase />
+        <ShowcaseContainer />
       </div>
     );
   }

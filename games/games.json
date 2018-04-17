@@ -7,6 +7,7 @@
     "keyPointsOfInterestUrl":
       "https://gist.githubusercontent.com/eyaleizenberg/1d38da73f148dd4ceca62530ed23a3ca/raw/c30cf5e39bf21190d5b37e0a6e03f669c328f2a0/doom_description.md",
     "developerGithubId": "eyaleizenberg",
+    "developerName": "Eyal Eizenberg",
     "url": "https://io.github.com/minesweeper",
     "githubUrl": "https://github.com/eyaleizenberg/minesweeper",
     "techIds": ["react", "html5", "sass", "typescript"],
