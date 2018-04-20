@@ -12,7 +12,8 @@
   flex-direction: column;
   color: $white;
   align-items: center;
-  padding: 79px 0 86px 0;
+  justify-content: center;
+  height: $welcomeHeight;
 }
 
 .title {

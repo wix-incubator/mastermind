@@ -10,18 +10,22 @@ interface IProps {
 export default class Showcase extends React.PureComponent<IProps> {
   renderGameShowcases(): JSX.Element[] {
     const { games } = this.props;
-    return Object.keys(games).map(id => {
-      const game = games[id];
-      return <GameShowcase key={game.id} {...game} />;
-    });
+    return Object.keys(games)
+      .slice(0, 3)
+      .map(id => {
+        const game = games[id];
+        return <GameShowcase key={game.id} {...game} />;
+      });
   }
 
   render() {
     return (
-      <div className={styles.container}>
-        <span className={styles.title}>Our latest games</span>
-        <div className={styles.showcasesContainer}>
-          {this.renderGameShowcases()}
+      <div className={styles.outerShowcaseContainer}>
+        <div className={styles.innerShowcaseContainer}>
+          <span className={styles.title}>Our latest games</span>
+          <div className={styles.showcasesContainer}>
+            {this.renderGameShowcases()}
+          </div>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 .layoutContainer {
   display: grid;
   grid-template-columns: 1fr 928px 1fr;
-  grid-template-rows: 64px auto auto auto 104px;
+  grid-template-rows: 64px auto auto auto auto;
   position: relative;
 }

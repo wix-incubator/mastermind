@@ -1,3 +1,5 @@
+@import "../../styles/styles.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,4 +8,22 @@
 .thumbnail {
   width: 288px;
   height: 162px;
+}
+
+.gameName {
+  margin-top: 13px;
+  @include Lato(16px);
+}
+
+.devNameContainer {
+  margin-top: 4px;
+  @include Lato(14px);
+}
+
+.devName {
+  color: $radioActiveGreen;
+  text-decoration-line: none;
+  &:hover {
+    text-decoration-line: underline;
+  }
 }

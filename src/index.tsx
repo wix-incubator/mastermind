@@ -8,6 +8,7 @@ import GameContainer from './components/Game/Game.container';
 import { Route } from 'react-router';
 import Welcome from './components/Welcome/Welcome';
 import { ConnectedRouter } from 'react-router-redux';
+import { GAME_PATH, ROOT_PATH } from './utilities/routes';
 import './styles/tippy.scss';
 import './styles/global.scss';
 
@@ -17,8 +18,8 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Layout>
-        <Route exact path="/" component={Welcome} />
-        <Route path="/games/:id" component={GameContainer} />
+        <Route exact path={ROOT_PATH} component={Welcome} />
+        <Route path={GAME_PATH} component={GameContainer} />
       </Layout>
     </ConnectedRouter>
   </Provider>,

@@ -1,12 +1,20 @@
-@import '../../styles/styles.scss';
+@import "../../styles/styles.scss";
 
-.container {
+.outerShowcaseContainer {
+  display: grid;
+  grid-template-columns: 1fr 928px 1fr;
+  grid-column: 1 / -1;
+  background-color: $white;
+}
+
+.innerShowcaseContainer {
   grid-column: 2 / -2;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $white;
-  padding: 91px 0 86px 0;
+  justify-content: center;
+  height: calc(100vh - #{$welcomeHeight} - #{$footerHeight} - #{$titleHeight});
 }
 
 .title {
@@ -17,6 +25,7 @@
 }
 
 .showcasesContainer {
+  margin-top: 29px;
   display: flex;
   justify-content: center;
 }
