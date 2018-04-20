@@ -1,0 +1,79 @@
+.container {
+  width: 235px;
+  height: 180px;
+}
+.cssloadTetromino {
+  width: 94px;
+  height: 109px;
+  position: absolute;
+  transition: all ease 0.35s;
+  background: url('data:image/svg+xml;utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 684"%3E%3Cpath fill="%23010101" d="M305.7 0L0 170.9v342.3L305.7 684 612 513.2V170.9L305.7 0z"/%3E%3Cpath fill="%23fff" d="M305.7 80.1l-233.6 131 233.6 131 234.2-131-234.2-131"/%3E%3C/svg%3E')
+    no-repeat top center;
+}
+
+.cssloadBox1 {
+  animation: cssloadTetromino1 1.73s ease-out infinite;
+}
+
+.cssloadBox2 {
+  animation: cssloadTetromino2 1.73s ease-out infinite;
+}
+
+.cssloadBox3 {
+  animation: cssloadTetromino3 1.73s ease-out infinite;
+  z-index: 2;
+}
+
+.cssloadBox4 {
+  animation: cssloadTetromino4 1.73s ease-out infinite;
+}
+
+@keyframes cssloadTetromino1 {
+  0%,
+  40% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(47px, -26px);
+  }
+  60%,
+  100% {
+    transform: translate(94px, 0);
+  }
+}
+
+@keyframes cssloadTetromino2 {
+  0%,
+  20% {
+    transform: translate(94px, 0px);
+  }
+  40%,
+  100% {
+    transform: translate(140px, 26px);
+  }
+}
+
+@keyframes cssloadTetromino3 {
+  0% {
+    transform: translate(140px, 26px);
+  }
+  20%,
+  60% {
+    transform: translate(94px, 53px);
+  }
+  90%,
+  100% {
+    transform: translate(47px, 26px);
+  }
+}
+
+@keyframes cssloadTetromino4 {
+  0%,
+  60% {
+    transform: translate(47px, 26px);
+  }
+  90%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
