@@ -5,6 +5,7 @@ import { selectors } from '../../redux/reducers';
 import { IGame } from '../../types/game';
 import { IState } from '../../types/state';
 import { match } from 'react-router';
+import { fetchGames } from '../../actions/gameActions';
 const { getGamesData } = selectors;
 
 interface MatchParams {
@@ -14,9 +15,17 @@ interface MatchParams {
 interface IProps {
   game: IGame;
   match: match<MatchParams>;
+  fetchGames: () => any;
 }
 
 class GameContainer extends React.PureComponent<IProps> {
+  componentDidMount() {
+    const { game, fetchGames } = this.props;
+    if (!game) {
+      fetchGames();
+    }
+  }
+
   render() {
     return <Game {...this.props.game} />;
   }
@@ -32,4 +41,4 @@ const mapStateToProps = (
   };
 };
 
-export default connect(mapStateToProps)(GameContainer);
+export default connect(mapStateToProps, { fetchGames })(GameContainer);

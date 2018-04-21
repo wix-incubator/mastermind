@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import "../../styles/styles.scss";
 
 .outerHeaderContainer {
   background-color: $black;
@@ -11,6 +11,8 @@
 
 .innerHeaderContainer {
   grid-column: 2 / -2;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header {

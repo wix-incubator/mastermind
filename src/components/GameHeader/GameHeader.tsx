@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classnames from 'classnames';
 import Star from '../Star/Star';
 import IconHolder from '../IconHolder/IconHolder';
@@ -34,9 +33,11 @@ export default class GameHeader extends React.PureComponent<
   InnerState
 > {
   private headerYOffset: number;
+  private header: any;
 
   constructor(props: IProps) {
     super(props);
+    this.header = React.createRef();
     this.state = {
       collapsed: false
     };
@@ -50,7 +51,7 @@ export default class GameHeader extends React.PureComponent<
   };
 
   componentDidMount() {
-    const headerRef = ReactDOM.findDOMNode(this.refs.header) as HTMLDivElement;
+    const headerRef = this.header.current as HTMLDivElement;
     setTimeout(() => {
       this.headerYOffset = headerRef.offsetTop;
       window.addEventListener('scroll', this.handleScroll);
@@ -215,7 +216,7 @@ export default class GameHeader extends React.PureComponent<
             className={classnames(styles.outerGameHeader, {
               [styles.collapsed]: collapsed
             })}
-            ref={'header'}
+            ref={this.header}
           >
             <div className={styles.innerGameHeader}>
               {this.renderLeftSide()}

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from '../Button/Button';
-import * as ReactDOM from 'react-dom';
 const paypal = require('../../assets/images/paypal.svg');
 const patreon = require('../../assets/images/patreon.svg');
 const styles = require('./DonateTooltip.scss');
@@ -11,9 +10,15 @@ interface IProps {
 }
 
 export default class DonateTooltip extends React.PureComponent<IProps> {
+  private paypalForm: any;
+
+  constructor(props: IProps) {
+    super(props);
+    this.paypalForm = React.createRef();
+  }
+
   submitPaypalForm = (): void => {
-    const el = ReactDOM.findDOMNode(this.refs.paypalForm) as HTMLFormElement;
-    el.submit();
+    this.paypalForm.current.submit();
   };
 
   renderPaypalElements(): JSX.Element | null {
@@ -29,7 +34,7 @@ export default class DonateTooltip extends React.PureComponent<IProps> {
           action="https://www.paypal.com/cgi-bin/webscr"
           method="post"
           target="_blank"
-          ref="paypalForm"
+          ref={this.paypalForm}
           className={styles.paypalForm}
         >
           <input type="hidden" name="business" value={paypalUsername} />
