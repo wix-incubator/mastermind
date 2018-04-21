@@ -7,17 +7,24 @@ const styles = require('./Search.scss');
 interface ISearchState {
   expanded: boolean;
   collapsing: boolean;
+  query: string;
 }
 
-export default class Search extends React.PureComponent<{}, ISearchState> {
-  private inputField: any;
+interface IProps {
+  searchGame: (query: string) => any;
+}
 
-  constructor(props: any) {
+export default class Search extends React.PureComponent<IProps, ISearchState> {
+  private inputField: any;
+  private beginSearch: any;
+
+  constructor(props: IProps) {
     super(props);
     this.inputField = React.createRef();
     this.state = {
       expanded: false,
-      collapsing: false
+      collapsing: false,
+      query: ''
     };
   }
 
@@ -29,13 +36,20 @@ export default class Search extends React.PureComponent<{}, ISearchState> {
   collapseSearch = () => {
     this.setState({ collapsing: true });
     setTimeout(
-      () => this.setState({ collapsing: false, expanded: false }),
+      () => this.setState({ collapsing: false, expanded: false, query: '' }),
       400
     );
   };
 
+  onChange = (event: any) => {
+    clearTimeout(this.beginSearch);
+    const { value } = event.target;
+    this.setState({ query: value });
+    this.beginSearch = setTimeout(() => this.props.searchGame(value), 1000);
+  };
+
   render() {
-    const { expanded, collapsing } = this.state;
+    const { expanded, collapsing, query } = this.state;
 
     return (
       <div className={styles.container}>
@@ -53,6 +67,8 @@ export default class Search extends React.PureComponent<{}, ISearchState> {
           })}
           type={'text'}
           ref={this.inputField}
+          onChange={this.onChange}
+          value={query}
         />
         <img
           className={classnames(styles.cancelButton, {
