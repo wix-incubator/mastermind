@@ -12,6 +12,7 @@ interface ISearchState {
 
 interface IProps {
   searchGame: (query: string) => any;
+  cancelSearch: () => void;
 }
 
 export default class Search extends React.PureComponent<IProps, ISearchState> {
@@ -34,6 +35,7 @@ export default class Search extends React.PureComponent<IProps, ISearchState> {
   };
 
   collapseSearch = () => {
+    this.props.cancelSearch();
     this.setState({ collapsing: true });
     setTimeout(
       () => this.setState({ collapsing: false, expanded: false, query: '' }),
@@ -45,7 +47,9 @@ export default class Search extends React.PureComponent<IProps, ISearchState> {
     clearTimeout(this.beginSearch);
     const { value } = event.target;
     this.setState({ query: value });
-    this.beginSearch = setTimeout(() => this.props.searchGame(value), 1000);
+    if (value.length > 1) {
+      this.beginSearch = setTimeout(() => this.props.searchGame(value), 500);
+    }
   };
 
   render() {

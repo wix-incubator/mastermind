@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import reduxCornell from 'redux-cornell';
 import { routerReducer } from 'react-router-redux';
-import { techs } from '../../constants/techData';
+import { techData } from '../../constants/techData';
 
 const { selectors, actions, superReducer } = reduxCornell({
   initialState: {
@@ -18,7 +18,12 @@ const { selectors, actions, superReducer } = reduxCornell({
       sorted: ['1a2b3c'],
       data: {}
     },
-    techs
+    techs: {
+      data: techData
+    },
+    search: {
+      results: null
+    }
   }
 });
 
