@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classnames from 'classnames';
+import SearchResultsContainer from '../SearchResults/SearchResults.container';
 const searchIcon = require('../../assets/images/search.svg');
 const cancelButton = require('../../assets/images/cancelButton.svg');
 const styles = require('./Search.scss');
@@ -56,32 +57,35 @@ export default class Search extends React.PureComponent<IProps, ISearchState> {
     const { expanded, collapsing, query } = this.state;
 
     return (
-      <div className={styles.container}>
-        <img
-          className={classnames(styles.searchIcon, {
-            [styles.visible]: !expanded
-          })}
-          src={searchIcon}
-          onClick={this.expandSearch}
-        />
-        <input
-          className={classnames(styles.field, {
-            [styles.visible]: expanded,
-            [styles.collapsing]: collapsing
-          })}
-          type={'text'}
-          ref={this.inputField}
-          onChange={this.onChange}
-          value={query}
-        />
-        <img
-          className={classnames(styles.cancelButton, {
-            [styles.visible]: expanded
-          })}
-          src={cancelButton}
-          onClick={this.collapseSearch}
-        />
-      </div>
+      <React.Fragment>
+        <div className={styles.container}>
+          <img
+            className={classnames(styles.searchIcon, {
+              [styles.visible]: !expanded
+            })}
+            src={searchIcon}
+            onClick={this.expandSearch}
+          />
+          <input
+            className={classnames(styles.field, {
+              [styles.visible]: expanded,
+              [styles.collapsing]: collapsing
+            })}
+            type={'text'}
+            ref={this.inputField}
+            onChange={this.onChange}
+            value={query}
+          />
+          <img
+            className={classnames(styles.cancelButton, {
+              [styles.visible]: expanded
+            })}
+            src={cancelButton}
+            onClick={this.collapseSearch}
+          />
+        </div>
+        <SearchResultsContainer />
+      </React.Fragment>
     );
   }
 }

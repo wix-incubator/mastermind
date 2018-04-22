@@ -1,5 +1,6 @@
 import { IDev } from './dev';
 import { IGame } from './game';
+import { ITech } from './tech';
 
 export interface IState {
   superReducer: {
@@ -12,7 +13,12 @@ export interface IState {
       data: { [key: string]: IGame };
     };
     techs: {
-      [key: string]: any;
+      data: {
+        [key: string]: ITech;
+      };
+    };
+    search: {
+      results?: string[];
     };
   };
 }
