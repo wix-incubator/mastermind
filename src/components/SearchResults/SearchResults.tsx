@@ -20,10 +20,12 @@ export default class SearchResults extends React.PureComponent<IProps> {
 
   componentDidMount() {
     this.modalRoot.appendChild(this.el);
+    document.getElementsByTagName('body')[0].className = 'preventScrolling';
   }
 
   componentWillUnmount() {
     this.modalRoot.removeChild(this.el);
+    document.getElementsByTagName('body')[0].className = '';
   }
 
   renderResults() {
@@ -32,12 +34,12 @@ export default class SearchResults extends React.PureComponent<IProps> {
 
   renderNoResults() {
     return (
-      <React.Fragment>
+      <div className={styles.noResultsContainer}>
         <span className={styles.noResults}>Nothing found</span>
         <span className={styles.backToGame} onClick={this.props.cancelSearch}>
           Back to game
         </span>
-      </React.Fragment>
+      </div>
     );
   }
 

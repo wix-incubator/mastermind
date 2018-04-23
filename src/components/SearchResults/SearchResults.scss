@@ -1,0 +1,34 @@
+@import "../../styles/styles.scss";
+
+.overlay {
+  top: $titleHeight;
+  height: calc(100vh - #{$titleHeight});
+  width: 100%;
+  z-index: 100;
+  background-color: $standardText;
+  opacity: 0.95;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+%main {
+  width: $mainWidth;
+  margin-top: 39px;
+}
+
+.noResultsContainer {
+  @extend %main;
+  display: flex;
+  flex-direction: column;
+}
+
+.noResults {
+  color: $white;
+  @include Lato(24px);
+}
+
+.backToGame {
+  color: $radioActiveGreen;
+  @include Lato(14px);
+}

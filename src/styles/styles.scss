@@ -15,6 +15,9 @@ $footerHeight: 104px;
 $titleHeight: 64px;
 $welcomeHeight: 30vh;
 
+// widths
+$mainWidth: 928px;
+
 // Fonts
 @mixin Montserrat($size) {
   font-family: "Montserrat", sans-serif;
