@@ -1,8 +1,14 @@
 import { connect } from 'react-redux';
 import Search from './Search';
-import { actions } from '../../redux/reducers';
-import { searchGame } from '../../actions/searchActions';
-export default connect(null, {
+import { selectors } from '../../redux/reducers';
+import { searchGame, cancelSearch } from '../../actions/searchActions';
+import { IState } from '../../types/state';
+
+const mapStateToProps = (state: IState) => ({
+  query: selectors.getSearchQuery(state)
+});
+
+export default connect(mapStateToProps, {
   searchGame,
-  cancelSearch: actions.nullifySearchResults
+  cancelSearch
 })(Search);

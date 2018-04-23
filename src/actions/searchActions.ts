@@ -22,12 +22,30 @@ const matchGames = (
   }, []);
 };
 
+let searchTimeout: number;
+
 export const searchGame = (query: string) => (
   dispatch: Dispatch<IState>,
   getState: () => IState
 ) => {
-  const state = getState();
-  const games = selectors.getGamesData(state);
-  const queryResults = matchGames(query, games);
-  dispatch(actions.setSearchResults(queryResults));
+  const { setSearchQuery, overrideSearch, setSearchResults } = actions;
+  dispatch(setSearchQuery(query));
+  clearTimeout(searchTimeout);
+  if (query.length > 1) {
+    searchTimeout = window.setTimeout(() => {
+      dispatch(
+        overrideSearch({ results: null, query, isOverlayVisible: true })
+      );
+      const state = getState();
+      const games = selectors.getGamesData(state);
+      const queryResults = matchGames(query, games);
+      dispatch(setSearchResults(queryResults));
+    }, 500);
+  }
+};
+
+export const cancelSearch = () => (dispatch: Dispatch<IState>) => {
+  dispatch(
+    actions.overrideSearch({ results: [], query: '', isOverlayVisible: false })
+  );
 };

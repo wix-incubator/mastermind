@@ -3,15 +3,33 @@ import { connect } from 'react-redux';
 import SearchResults from './SearchResults';
 import { selectors } from '../../redux/reducers';
 import { IState } from '../../types/state';
+import { cancelSearch } from '../../actions/searchActions';
+
+const {
+  getSearchResults,
+  getSearchQuery,
+  getSearchIsOverlayVisible
+} = selectors;
 
 interface IProps {
   results: string[] | null;
+  query: string;
+  isOverlayVisible: boolean;
+  cancelSearch: () => any;
 }
+
 class SearchResultsContainer extends React.PureComponent<IProps> {
   render() {
-    const { results } = this.props;
-    if (results) {
-      return <SearchResults results={results} />;
+    const { results, query, cancelSearch, isOverlayVisible } = this.props;
+
+    if (isOverlayVisible) {
+      return (
+        <SearchResults
+          results={results}
+          query={query}
+          cancelSearch={cancelSearch}
+        />
+      );
     }
 
     return null;
@@ -19,7 +37,11 @@ class SearchResultsContainer extends React.PureComponent<IProps> {
 }
 
 const mapStateToProps = (state: IState) => ({
-  results: selectors.getSearchResults(state)
+  results: getSearchResults(state),
+  query: getSearchQuery(state),
+  isOverlayVisible: getSearchIsOverlayVisible(state)
 });
 
-export default connect(mapStateToProps)(SearchResultsContainer);
+export default connect(mapStateToProps, { cancelSearch })(
+  SearchResultsContainer
+);

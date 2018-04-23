@@ -22,7 +22,9 @@ const { selectors, actions, superReducer } = reduxCornell({
       data: techData
     },
     search: {
-      results: null
+      results: null,
+      query: '',
+      isOverlayVisible: false
     }
   }
 });

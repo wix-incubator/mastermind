@@ -1,8 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+const styles = require('./SearchResults.scss');
 
 interface IProps {
-  results?: string[];
+  results: string[] | null;
+  query: string | null;
+  cancelSearch: () => any;
 }
 
 export default class SearchResults extends React.PureComponent<IProps> {
@@ -23,8 +26,31 @@ export default class SearchResults extends React.PureComponent<IProps> {
     this.modalRoot.removeChild(this.el);
   }
 
+  renderResults() {
+    return <h1>WE HAVE RESULTS</h1>;
+  }
+
+  renderNoResults() {
+    return (
+      <React.Fragment>
+        <span className={styles.noResults}>Nothing found</span>
+        <span className={styles.backToGame} onClick={this.props.cancelSearch}>
+          Back to game
+        </span>
+      </React.Fragment>
+    );
+  }
+
   renderOverlay() {
-    return <h1 style={{ color: 'green' }}>I AM THE MODAL!</h1>;
+    const { results } = this.props;
+
+    return (
+      <div className={styles.overlay}>
+        {results && results.length
+          ? this.renderResults()
+          : this.renderNoResults()}
+      </div>
+    );
   }
 
   render() {
