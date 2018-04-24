@@ -3,26 +3,33 @@ import { IGame } from '../../types/game';
 import { generateDevProfileUrl } from '../../utilities/githubUrls';
 import { getGamePath } from '../../utilities/routes';
 import { Link } from 'react-router-dom';
+import * as classnames from 'classnames';
 const styles = require('./GameShowcase.scss');
 
-export default class GameShowcase extends React.PureComponent<IGame> {
+interface IProps {
+  game: IGame;
+  inSearch?: boolean;
+}
+
+export default class GameShowcase extends React.PureComponent<IProps> {
   render() {
     const {
-      thumbnailUrl,
-      developerName,
-      developerGithubId,
-      gameName,
-      id
+      inSearch,
+      game: { thumbnailUrl, developerName, developerGithubId, gameName, id }
     } = this.props;
 
     return (
-      <div className={styles.container}>
+      <div
+        className={classnames(styles.container, {
+          [styles.inSearch]: inSearch
+        })}
+      >
         <Link to={getGamePath(id)}>
           <img src={thumbnailUrl} className={styles.thumbnail} />
         </Link>
         <span className={styles.gameName}>{gameName}</span>
         <span className={styles.devNameContainer}>
-          <span className={styles.by}>By </span>
+          <span>by</span>
           <a
             href={generateDevProfileUrl(developerGithubId)}
             className={styles.devName}

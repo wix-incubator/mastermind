@@ -3,6 +3,9 @@
 .container {
   display: flex;
   flex-direction: column;
+  &.inSearch {
+    color: $white;
+  }
 }
 
 .thumbnail {
@@ -23,6 +26,7 @@
 .devName {
   color: $radioActiveGreen;
   text-decoration-line: none;
+  margin-left: 5px;
   &:hover {
     text-decoration-line: underline;
   }

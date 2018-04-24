@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { IGame } from '../../types/game';
+import GameShowcase from '../GameShowcase/GameShowcase';
 const styles = require('./SearchResults.scss');
 
 interface IProps {
   results: string[] | null;
   query: string | null;
-  cancelSearch: () => any;
+  games: { [key: string]: IGame };
 }
 
 export default class SearchResults extends React.PureComponent<IProps> {
@@ -28,29 +30,57 @@ export default class SearchResults extends React.PureComponent<IProps> {
     document.getElementsByTagName('body')[0].className = '';
   }
 
-  renderResults() {
-    return <h1>WE HAVE RESULTS</h1>;
-  }
+  renderResults(): JSX.Element {
+    const { results, query, games } = this.props;
+    const resultsLength = (results || []).length;
 
-  renderNoResults() {
     return (
-      <div className={styles.noResultsContainer}>
-        <span className={styles.noResults}>Nothing found</span>
-        <span className={styles.backToGame} onClick={this.props.cancelSearch}>
-          Back to game
+      <React.Fragment>
+        <span className={styles.resultsCount}>
+          {`${resultsLength} ${
+            resultsLength > 1 ? 'results' : 'result'
+          } found for "${query}"`}
         </span>
-      </div>
+        <div className={styles.gameShowcases}>
+          {results &&
+            results.map(resultId => (
+              <GameShowcase key={resultId} game={games[resultId]} inSearch />
+            ))}
+        </div>
+      </React.Fragment>
     );
   }
 
-  renderOverlay() {
+  clickOnCancelButton() {
+    const cancelButton: HTMLElement = document.querySelector(
+      `img[data-hook='cancel-search-button']`
+    ) as HTMLElement;
+    cancelButton.click();
+  }
+
+  renderNoResults(): JSX.Element {
+    return (
+      <React.Fragment>
+        <span className={styles.noResults}>{`Nothing found for "${
+          this.props.query
+        }"`}</span>
+        <span className={styles.backToGame} onClick={this.clickOnCancelButton}>
+          Back to game
+        </span>
+      </React.Fragment>
+    );
+  }
+
+  renderOverlay(): JSX.Element {
     const { results } = this.props;
 
     return (
       <div className={styles.overlay}>
-        {results && results.length
-          ? this.renderResults()
-          : this.renderNoResults()}
+        <div className={styles.resultsContainer}>
+          {results && results.length
+            ? this.renderResults()
+            : this.renderNoResults()}
+        </div>
       </div>
     );
   }

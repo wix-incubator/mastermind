@@ -3,33 +3,28 @@ import { connect } from 'react-redux';
 import SearchResults from './SearchResults';
 import { selectors } from '../../redux/reducers';
 import { IState } from '../../types/state';
-import { cancelSearch } from '../../actions/searchActions';
+import { IGame } from '../../types/game';
 
 const {
   getSearchResults,
   getSearchQuery,
-  getSearchIsOverlayVisible
+  getSearchIsOverlayVisible,
+  getGamesData
 } = selectors;
 
 interface IProps {
   results: string[] | null;
   query: string;
   isOverlayVisible: boolean;
-  cancelSearch: () => any;
+  games: { [key: string]: IGame };
 }
 
 class SearchResultsContainer extends React.PureComponent<IProps> {
   render() {
-    const { results, query, cancelSearch, isOverlayVisible } = this.props;
+    const { results, query, isOverlayVisible, games } = this.props;
 
     if (isOverlayVisible) {
-      return (
-        <SearchResults
-          results={results}
-          query={query}
-          cancelSearch={cancelSearch}
-        />
-      );
+      return <SearchResults results={results} query={query} games={games} />;
     }
 
     return null;
@@ -39,9 +34,8 @@ class SearchResultsContainer extends React.PureComponent<IProps> {
 const mapStateToProps = (state: IState) => ({
   results: getSearchResults(state),
   query: getSearchQuery(state),
-  isOverlayVisible: getSearchIsOverlayVisible(state)
+  isOverlayVisible: getSearchIsOverlayVisible(state),
+  games: getGamesData(state)
 });
 
-export default connect(mapStateToProps, { cancelSearch })(
-  SearchResultsContainer
-);
+export default connect(mapStateToProps)(SearchResultsContainer);

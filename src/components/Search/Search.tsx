@@ -76,6 +76,7 @@ export default class Search extends React.PureComponent<IProps, ISearchState> {
             })}
             src={cancelButton}
             onClick={this.collapseSearch}
+            data-hook={'cancel-search-button'}
           />
         </div>
         <SearchResultsContainer />

@@ -12,15 +12,11 @@
   justify-content: center;
 }
 
-%main {
-  width: $mainWidth;
-  margin-top: 39px;
-}
-
-.noResultsContainer {
-  @extend %main;
+.resultsContainer {
   display: flex;
   flex-direction: column;
+  width: $mainWidth;
+  margin-top: 39px;
 }
 
 .noResults {
@@ -31,4 +27,18 @@
 .backToGame {
   color: $radioActiveGreen;
   @include Lato(14px);
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.resultsCount {
+  @include Lato(20px);
+  color: $white;
+}
+
+.gameShowcases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
 }

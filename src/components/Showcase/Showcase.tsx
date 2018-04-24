@@ -14,7 +14,7 @@ export default class Showcase extends React.PureComponent<IProps> {
       .slice(0, 3)
       .map(id => {
         const game = games[id];
-        return <GameShowcase key={game.id} {...game} />;
+        return <GameShowcase key={game.id} game={game} />;
       });
   }
 
