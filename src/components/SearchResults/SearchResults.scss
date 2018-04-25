@@ -37,8 +37,10 @@
 }
 
 .gameShowcases {
+  margin-top: 17px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, 288px);
+  grid-template-rows: repeat(2, 219px);
   grid-column-gap: 32px;
   grid-row-gap: 32px;
 }
