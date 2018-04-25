@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { IGame } from '../../types/game';
-import GameShowcase from '../GameShowcase/GameShowcase';
+import GameShowcaseContainer from '../GameShowcase/GameShowcase.container';
+import { clickOnCancelButton } from '../../utilities/clickOnCancelButton';
 const styles = require('./SearchResults.scss');
 
 interface IProps {
@@ -44,18 +45,15 @@ export default class SearchResults extends React.PureComponent<IProps> {
         <div className={styles.gameShowcases}>
           {results &&
             results.map(resultId => (
-              <GameShowcase key={resultId} game={games[resultId]} inSearch />
+              <GameShowcaseContainer
+                key={resultId}
+                game={games[resultId]}
+                inSearch
+              />
             ))}
         </div>
       </React.Fragment>
     );
-  }
-
-  clickOnCancelButton() {
-    const cancelButton: HTMLElement = document.querySelector(
-      `img[data-hook='cancel-search-button']`
-    ) as HTMLElement;
-    cancelButton.click();
   }
 
   renderNoResults(): JSX.Element {
@@ -64,7 +62,7 @@ export default class SearchResults extends React.PureComponent<IProps> {
         <span className={styles.noResults}>{`Nothing found for "${
           this.props.query
         }"`}</span>
-        <span className={styles.backToGame} onClick={this.clickOnCancelButton}>
+        <span className={styles.backToGame} onClick={clickOnCancelButton}>
           Back to game
         </span>
       </React.Fragment>

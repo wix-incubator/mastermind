@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IGame } from '../../types/game';
-import GameShowcase from '../GameShowcase/GameShowcase';
+import GameShowcaseContainer from '../GameShowcase/GameShowcase.container';
 const styles = require('./Showcase.scss');
 
 interface IProps {
@@ -14,7 +14,7 @@ export default class Showcase extends React.PureComponent<IProps> {
       .slice(0, 3)
       .map(id => {
         const game = games[id];
-        return <GameShowcase key={game.id} game={game} />;
+        return <GameShowcaseContainer key={game.id} game={game} />;
       });
   }
 
