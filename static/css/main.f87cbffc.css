@@ -20,7 +20,7 @@
   font-size: 14px; }
 
 .GameShowcase__devName___rTU6y {
-  color: #38d750;
+  color: #e06154;
   text-decoration-line: none;
   margin-left: 5px; }
   .GameShowcase__devName___rTU6y:hover {
@@ -48,7 +48,7 @@
   font-size: 24px; }
 
 .SearchResults__backToGame___1RXp9 {
-  color: #38d750;
+  color: #e06154;
   font-family: "Lato", sans-serif;
   font-size: 14px;
   margin-top: 15px;
@@ -166,7 +166,7 @@
 .IconHolder__iconHolder___2nuWd {
   width: 42px;
   height: 42px;
-  border: 1px solid #38d750;
+  border: 1px solid #e06154;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -177,13 +177,13 @@
   padding-bottom: 15px; }
 
 .Techs__techIcon___1EmC1 {
-  color: #38d750;
+  color: #e06154;
   font-size: 24px; }
 
 .Techs__link___dnr_n {
   text-decoration-line: none; }
 .Button__buttonContainer___1YOkP {
-  background-color: #38d750;
+  background-color: #e06154;
   border-radius: 99px;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -264,7 +264,7 @@
 .DevDetails__reportIssue___1aJdi {
   font-family: "Lato", sans-serif;
   font-size: 14px;
-  color: #38d750;
+  color: #e06154;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -400,7 +400,7 @@
 
 .GameHeader__devLink___14pTX {
   margin: 0 5px;
-  color: #38d750;
+  color: #e06154;
   cursor: pointer; }
 
 .GameHeader__rightSide___lDIx2 {
@@ -1097,4 +1097,4 @@ body {
   body.preventScrolling {
     overflow: hidden; }
 
-/*# sourceMappingURL=main.5b11ee90.css.map*/
+/*# sourceMappingURL=main.f87cbffc.css.map*/
