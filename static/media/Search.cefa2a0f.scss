@@ -1,0 +1,59 @@
+@import "../../styles/styles.scss";
+
+.container {
+  position: relative;
+  width: 208px;
+}
+
+.searchIcon {
+  right: 0;
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  &.visible {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+.field {
+  @include Lato(16px);
+  color: $textField;
+  line-height: 1.5;
+  position: absolute;
+  opacity: 0;
+  height: 24px;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 26.5px;
+  outline: none;
+  width: 1px;
+  right: 0;
+  top: -5px;
+  &.visible {
+    transition: opacity 300ms ease-in-out 300ms, width 300ms ease-in-out 300ms;
+    opacity: 1;
+    width: 172px;
+  }
+  &.collapsing {
+    transition: opacity 300ms ease-in-out, width 300ms ease-in-out;
+    width: 1px;
+    opacity: 0;
+  }
+}
+
+.cancelButton {
+  position: absolute;
+  opacity: 0;
+  right: 16px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  &.visible {
+    transition: opacity 300ms ease-in-out 300ms;
+    opacity: 1;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/styles.scss";
+
+.gameContainer {
+  background-color: $black;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 200px;
+  height: calc(100vh - 284px);
+}
+
+.game {
+  width: 768px;
+  height: 432px;
+}
+
+.spinnerContainer {
+  height: calc(100vh - #{$titleHeight} - #{$footerHeight});
+  width: 100%;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+}
+
+.loadingText {
+  @include Montserrat(24px);
+}

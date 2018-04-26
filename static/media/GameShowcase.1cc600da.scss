@@ -1,0 +1,34 @@
+@import "../../styles/styles.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  &.inSearch {
+    color: $white;
+  }
+}
+
+.thumbnail {
+  cursor: pointer;
+  width: 288px;
+  height: 162px;
+}
+
+.gameName {
+  margin-top: 13px;
+  @include Lato(16px);
+}
+
+.devNameContainer {
+  margin-top: 4px;
+  @include Lato(14px);
+}
+
+.devName {
+  color: $radioActiveGreen;
+  text-decoration-line: none;
+  margin-left: 5px;
+  &:hover {
+    text-decoration-line: underline;
+  }
+}

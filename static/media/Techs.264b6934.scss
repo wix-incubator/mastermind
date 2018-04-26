@@ -1,0 +1,16 @@
+@import '../../styles/styles.scss';
+
+.iconsContainer {
+  margin-top: 21px;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.techIcon {
+  color: $radioActiveGreen;
+  font-size: 24px;
+}
+
+.link {
+  text-decoration-line: none;
+}

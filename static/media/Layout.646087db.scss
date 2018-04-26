@@ -1,0 +1,8 @@
+@import "../../styles/styles.scss";
+
+.layoutContainer {
+  display: grid;
+  grid-template-columns: 1fr #{$mainWidth} 1fr;
+  grid-template-rows: 64px auto auto auto auto;
+  position: relative;
+}

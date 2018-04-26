@@ -1,0 +1,11 @@
+@import '../../styles/styles.scss';
+
+.star {
+  width: 18px;
+  height: 18px;
+  fill: $socialIcons;
+  margin-left: 6px;
+  &.highlighted {
+    fill: $yellow;
+  }
+}
