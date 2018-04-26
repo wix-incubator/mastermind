@@ -1,12 +1,11 @@
-@import '../../styles/styles.scss';
+@import "../../styles/styles.scss";
 
 .iconHolder {
   width: 42px;
   height: 42px;
-  border: 1px solid $radioActiveGreen;
+  border: 1px solid $brandRed;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
