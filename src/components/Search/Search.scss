@@ -20,7 +20,7 @@
 }
 
 .field {
-  @include Lato(16px);
+  @include Text(16px);
   color: $textField;
   line-height: 1.5;
   position: absolute;

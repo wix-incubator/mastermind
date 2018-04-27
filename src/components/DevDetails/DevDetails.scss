@@ -18,7 +18,7 @@
 }
 
 .devName {
-  @include Montserrat(20px);
+  @include Header(20px);
   color: $standardText;
   line-height: 1.5;
   margin-top: 21px;
@@ -41,13 +41,13 @@
 }
 
 .bioText {
-  @include Lato(14px);
+  @include Text(14px);
   line-height: 20px;
   margin-bottom: 24px;
 }
 
 .reportIssue {
-  @include Lato(14px);
+  @include Text(14px);
   color: $brandRed;
   display: flex;
   justify-content: center;

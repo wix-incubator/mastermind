@@ -6,7 +6,10 @@ import DonateButton from '../DonateButton/DonateButton';
 import { Tooltip } from 'react-tippy';
 import ShareTooltip from '../ShareTooltip/ShareTooltip';
 import Button from '../Button/Button';
-import scrollToElement from 'scroll-to-element';
+import {
+  scrollToGameDetails,
+  scrollToTop
+} from '../../utilities/scrollToElement';
 import FeedbackTooltip from '../FeedbackTooltip/FeedbackTooltip';
 const share = require('../../assets/images/share.svg');
 const megaphone = require('../../assets/images/megaphone.svg');
@@ -87,10 +90,6 @@ export default class GameHeader extends React.PureComponent<
     );
   }
 
-  navigateToTop() {
-    scrollToElement('#top', { duration: 800 });
-  }
-
   renderDonateOrBackButton(): JSX.Element {
     const { paypalUsername, patreonUsername } = this.props;
     const { collapsed } = this.state;
@@ -98,7 +97,7 @@ export default class GameHeader extends React.PureComponent<
     return (
       <React.Fragment>
         <Button
-          onClick={this.navigateToTop}
+          onClick={scrollToTop}
           className={classnames(styles.backButton, {
             [styles.hidden]: !collapsed
           })}
@@ -116,14 +115,6 @@ export default class GameHeader extends React.PureComponent<
         />
       </React.Fragment>
     );
-  }
-
-  navigateToGameDetails() {
-    scrollToElement('#gameDetails', {
-      duration: 800,
-      align: 'top',
-      offset: -113
-    });
   }
 
   renderLeftSide(): JSX.Element {
@@ -145,7 +136,7 @@ export default class GameHeader extends React.PureComponent<
           })}
         >
           <span>by</span>
-          <span onClick={this.navigateToGameDetails} className={styles.devLink}>
+          <span onClick={scrollToGameDetails} className={styles.devLink}>
             {name}
           </span>
           <span>{`on ${createdDate}`}</span>

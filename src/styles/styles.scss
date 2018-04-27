@@ -19,7 +19,7 @@ $welcomeHeight: 30vh;
 $mainWidth: 928px;
 
 // Fonts
-@mixin Montserrat($size) {
+@mixin Header($size) {
   font-family: "HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma",
     "HelveticaNeueW10-55Roma", "Helvetica Neue", "Helvetica", "Arial",
     "\30E1\30A4\30EA\30AA, meiryo", "\30D2\30E9\30AE\30CE\89D2\30B4   pro w3",
@@ -27,7 +27,7 @@ $mainWidth: 928px;
   font-size: $size;
 }
 
-@mixin Lato($size) {
+@mixin Text($size) {
   font-family: "HelveticaNeueW01-45Ligh", "HelveticaNeueW02-45Ligh",
     "HelveticaNeueW10-45Ligh", "Helvetica Neue", "Helvetica", "Arial",
     "\30E1\30A4\30EA\30AA, meiryo", "\30D2\30E9\30AE\30CE\89D2\30B4   pro w3",

@@ -16,12 +16,12 @@
 
 .gameName {
   margin-top: 13px;
-  @include Lato(16px);
+  @include Text(16px);
 }
 
 .devNameContainer {
   margin-top: 4px;
-  @include Lato(14px);
+  @include Text(14px);
 }
 
 .devName {

@@ -1,7 +1,7 @@
-@import '../../styles/styles.scss';
+@import "../../styles/styles.scss";
 
 .container {
-  @include Lato(16px);
+  @include Text(16px);
   line-height: 24px;
   color: $standardText;
 }

@@ -17,7 +17,7 @@
 }
 
 .header {
-  @include Montserrat(24px);
+  @include Header(24px);
   color: $white;
   text-decoration-line: none;
   display: flex;

@@ -21,18 +21,18 @@
 
 .noResults {
   color: $white;
-  @include Lato(24px);
+  @include Text(24px);
 }
 
 .backToGame {
   color: $brandRed;
-  @include Lato(14px);
+  @include Text(14px);
   margin-top: 15px;
   cursor: pointer;
 }
 
 .resultsCount {
-  @include Lato(20px);
+  @include Text(20px);
   color: $white;
 }
 

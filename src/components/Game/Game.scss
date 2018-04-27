@@ -1,4 +1,6 @@
 @import "../../styles/styles.scss";
+$gameWidth: 768px;
+$gameHeight: 432px;
 
 .gameContainer {
   background-color: $black;
@@ -10,9 +12,29 @@
   height: calc(100vh - 284px);
 }
 
+.gameWrapper {
+  position: relative;
+}
+
+.gameControls {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  width: $gameWidth;
+  height: $gameHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonsContainer {
+  width: 200px;
+}
+
 .game {
-  width: 768px;
-  height: 432px;
+  width: $gameWidth;
+  height: $gameHeight;
 }
 
 .spinnerContainer {
@@ -27,5 +49,21 @@
 }
 
 .loadingText {
-  @include Montserrat(24px);
+  @include Header(24px);
+}
+
+.aboutGameButton {
+  background-color: transparent;
+  border: 2px solid $brandRed;
+  color: $brandRed;
+  margin-top: 25px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: $brandRed transparent transparent transparent;
+  margin-left: 5px;
 }
