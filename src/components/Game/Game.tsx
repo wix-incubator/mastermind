@@ -13,7 +13,7 @@ export default class Game extends React.PureComponent<IGame> {
           <img className={styles.game} src={this.props.imageUrl} />
         </div>
         <GameHeaderContainer game={this.props} />
-        <GameDetails {...this.props} />;
+        <GameDetails {...this.props} />
       </React.Fragment>
     );
   }

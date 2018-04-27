@@ -60,12 +60,16 @@ export default class FeedbackModal extends React.PureComponent<IProps, IState> {
   validateState(state: IState): IState {
     let isFormValid: boolean = true;
     ['name', 'subject', 'body'].forEach((key: string) => {
-      isFormValid = !!state[name];
+      if (isFormValid) {
+        isFormValid = !!state[key];
+      }
     });
 
-    isFormValid = !!state.from.match(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
+    isFormValid =
+      isFormValid &&
+      !!state.from.match(
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
 
     return { ...state, isFormValid };
   }
