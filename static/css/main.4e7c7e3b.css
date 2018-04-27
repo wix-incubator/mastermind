@@ -639,7 +639,8 @@
   display: grid;
   grid-template-columns: 1fr 928px 1fr;
   grid-column: 1 / -1;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  border-top: 5px solid #e06154; }
 
 .Showcase__innerShowcaseContainer___3bjhT {
   grid-column: 2 / -2;
@@ -1139,4 +1140,4 @@ body {
   body.preventScrolling {
     overflow: hidden; }
 
-/*# sourceMappingURL=main.3060e686.css.map*/
+/*# sourceMappingURL=main.4e7c7e3b.css.map*/
