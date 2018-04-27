@@ -13,10 +13,19 @@
   grid-column: 2 / -2;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header {
   @include Montserrat(24px);
   color: $white;
   text-decoration-line: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 57px;
+  height: 43px;
+  margin-right: 10px;
 }
