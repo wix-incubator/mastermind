@@ -1,11 +1,10 @@
 {
-  "1a2b3c": {
-    "id": "1a2b3c",
+  "doom_minesweeper": {
+    "id": "doom_minesweeper",
     "gameName": "DOOM Minesweeper",
     "description":
       "Minesweeper is a single-player puzzle video game. The objective of the game is to clear a rectangular board containing hidden mines or bombs without detonating any of them, with help from clues about the number of neighboring mines in each field. This version of minesweeper is themed with the classic game DOOM, which is considered by many as one of the greatest games of all time. It popularized the 1st person shooter genre and introduced 3D gaming to the world.",
-    "keyPointsOfInterestUrl":
-      "https://gist.githubusercontent.com/eyaleizenberg/1d38da73f148dd4ceca62530ed23a3ca/raw/c30cf5e39bf21190d5b37e0a6e03f669c328f2a0/doom_description.md",
+    "keyPointsOfInterestUrl": "https://raw.githubusercontent.com/eyaleizenberg/doom_minesweeper/master/README.md",
     "developerGithubId": "eyaleizenberg",
     "developerName": "Eyal Eizenberg",
     "url": "https://eyaleizenberg.github.io/doom_minesweeper",
@@ -16,8 +15,8 @@
     "createdDate": "Mar 25, 2018",
     "rating": 3,
     "thumbnailUrl":
-      "https://raw.githubusercontent.com/wix-incubator/mastermind/master/public/doom_thumb.png",
+      "https://raw.githubusercontent.com/eyaleizenberg/doom_minesweeper/master/doom_thumb.png",
     "imageUrl":
-      "https://raw.githubusercontent.com/wix-incubator/mastermind/master/public/doom.png"
+      "https://raw.githubusercontent.com/eyaleizenberg/doom_minesweeper/master/doom.png"
   }
 }

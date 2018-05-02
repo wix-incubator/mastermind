@@ -1,4 +1,4 @@
-@import '../../styles/styles.scss';
+@import "../../styles/styles.scss";
 $animationTime: 400ms;
 
 .outerGameHeader {
@@ -96,7 +96,6 @@ $animationTime: 400ms;
 }
 
 %actionButton {
-  color: $black;
   transition: opacity $animationTime ease-in-out;
   z-index: 2;
 }
@@ -112,7 +111,8 @@ $animationTime: 400ms;
   cursor: pointer;
 }
 
-.donateButton, .backButton {
+.donateButton,
+.backButton {
   &.hidden {
     opacity: 0;
     z-index: 0;
@@ -139,4 +139,3 @@ $animationTime: 400ms;
 .shareIcon {
   width: 18px;
 }
-
