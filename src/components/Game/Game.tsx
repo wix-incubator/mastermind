@@ -30,7 +30,7 @@ export default class Game extends React.PureComponent<IGame, IGameState> {
   gameLoaded = (event: any) => {
     const { url } = this.props;
 
-    if (event.origin === url && event.message === 'gameLoaded') {
+    if (url.match(event.origin) && event.data === 'gameLoaded') {
       window.removeEventListener('message', this.gameLoaded);
       this.setState({
         loadingGame: false,
