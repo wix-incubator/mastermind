@@ -23,21 +23,21 @@ export default class Game extends React.PureComponent<IGame, IGameState> {
   }
 
   startGame = () => {
-    // window.addEventListener('message', this.gameLoaded);
+    window.addEventListener('message', this.gameLoaded);
     this.setState({ loadingGame: true });
   };
 
-  // gameLoaded = (event: any) => {
-  //   const { url } = this.props;
+  gameLoaded = (event: any) => {
+    const { url } = this.props;
 
-  //   if (event.origin === url && event.message === 'gameLoaded') {
-  //     window.removeEventListener('message', this.gameLoaded);
-  //     this.setState({
-  //       loadingGame: false,
-  //       gameLoaded: true
-  //     });
-  //   }
-  // };
+    if (event.origin === url && event.message === 'gameLoaded') {
+      window.removeEventListener('message', this.gameLoaded);
+      this.setState({
+        loadingGame: false,
+        gameLoaded: true
+      });
+    }
+  };
 
   renderGameImageOrSpinner() {
     const { loadingGame, gameLoaded } = this.state;
@@ -46,6 +46,7 @@ export default class Game extends React.PureComponent<IGame, IGameState> {
     if (loadingGame || gameLoaded) {
       return (
         <React.Fragment>
+          {loadingGame && <Spinner />}
           <iframe
             className={classnames(styles.gameFrame, {
               [styles.gameFrameLoaded]: gameLoaded
