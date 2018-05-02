@@ -14,6 +14,21 @@ $gameHeight: 432px;
 
 .gameWrapper {
   position: relative;
+  width: $gameWidth;
+  height: $gameHeight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameFrame {
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: none;
+  &.gameFrameLoaded {
+    display: block;
+  }
 }
 
 .gameControls {
