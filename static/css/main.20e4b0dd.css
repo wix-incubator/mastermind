@@ -598,7 +598,8 @@
 .Game__gameFrame___2QlaH {
   border: none;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  display: none; }
   .Game__gameFrame___2QlaH.Game__gameFrameLoaded___yt6Jr {
     display: block; }
 
@@ -1152,4 +1153,4 @@ body {
   body.preventScrolling {
     overflow: hidden; }
 
-/*# sourceMappingURL=main.e5579b9e.css.map*/
+/*# sourceMappingURL=main.20e4b0dd.css.map*/
