@@ -18,5 +18,25 @@
       "https://raw.githubusercontent.com/eyaleizenberg/doom_minesweeper/master/doom_thumb.png",
     "imageUrl":
       "https://raw.githubusercontent.com/eyaleizenberg/doom_minesweeper/master/doom.png"
+  },
+  "emoji_snake_game": {
+    "id": "emoji_snake_game",
+    "gameName": "Emoji Snake Game",
+    "description":
+      "The classic snake game that a lot of us were addicted to playing on our cellphones, made for fun using React and JS language - pure html and CSS ",
+    "keyPointsOfInterestUrl": "https://raw.githubusercontent.com/nudelx/ReactRetroGameEmojiSnake/master/README.md",
+    "developerGithubId": "nudelx",
+    "developerName": "Alex Nudelman",
+    "url": "https://nudelx.github.io/ReactRetroGameEmojiSnake/",
+    "githubUrl": "https://github.com/nudelx/ReactRetroGameEmojiSnake",
+    "techIds": ["react", "html", "css", "javascript"],
+    "paypalUsername": "nudelxl@gmail.com",
+    "patreonUsername": "---",
+    "createdDate": "Feb 20, 2018",
+    "rating": 1,
+    "thumbnailUrl":
+      "https://raw.githubusercontent.com/nudelx/ReactRetroGameEmojiSnake/master/readmeAssets/snakegif.gif",
+    "imageUrl":
+      "https://raw.githubusercontent.com/nudelx/ReactRetroGameEmojiSnake/master/readmeAssets/snakegif.gif"
   }
 }
