@@ -15,7 +15,6 @@ const { selectors, actions, superReducer } = reduxCornell({
       data: {}
     },
     games: {
-      sorted: ['1a2b3c'],
       data: {}
     },
     techs: {

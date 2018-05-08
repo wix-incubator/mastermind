@@ -12,7 +12,7 @@ export const fetchGames = () => (dispatch: Dispatch<IState>) => {
     )
     .then((response: AxiosResponse) => {
       const { data } = response;
-      dispatch(actions.extendGamesData(data));
+      dispatch(actions.overrideGames({ data }));
     })
     .catch((error: AxiosError) => {
       // tslint:disable-next-line

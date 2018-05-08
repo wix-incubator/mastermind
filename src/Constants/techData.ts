@@ -1,4 +1,10 @@
 export const techData = {
+  javascript: {
+    id: 'javascript',
+    name: 'Javascript',
+    icon: 'devicon-javascript-plain',
+    homepage: 'https://developer.mozilla.org/bm/docs/Web/JavaScript'
+  },
   react: {
     id: 'react',
     name: 'React',
