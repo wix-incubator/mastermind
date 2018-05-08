@@ -37,15 +37,15 @@ export default class Game extends React.PureComponent<IProps, IGameState> {
   };
 
   gameLoaded = (event: any) => {
-    // const { url } = this.props;
+    const { url } = this.props;
 
-    // if (url.match(event.origin) && event.data === 'gameLoaded') {
-    window.removeEventListener('message', this.gameLoaded);
-    this.setState({
-      loadingGame: false,
-      gameLoaded: true
-    });
-    // }
+    if (url.match(event.origin) && event.data === 'gameLoaded') {
+      window.removeEventListener('message', this.gameLoaded);
+      this.setState({
+        loadingGame: false,
+        gameLoaded: true
+      });
+    }
   };
 
   handleScreenModeToggle = () => {
