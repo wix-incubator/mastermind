@@ -15,6 +15,10 @@ export default class Techs extends React.PureComponent<IProps> {
     const { techs, techIds } = this.props;
     return techIds.map(techId => {
       const tech = techs[techId];
+      if (!tech) {
+        return null;
+      }
+
       return (
         <Tooltip
           key={tech.id}
