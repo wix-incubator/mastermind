@@ -719,7 +719,8 @@
 .Showcase__showcasesContainer___1lYHl {
   margin-top: 29px;
   display: flex;
-  justify-content: center; }
+  justify-content: space-evenly;
+  width: 100%; }
 .Welcome__outerWelcome___Bor2U {
   display: grid;
   grid-template-columns: 1fr 928px 1fr;
@@ -1198,4 +1199,4 @@ body {
   body.preventScrolling {
     overflow: hidden; }
 
-/*# sourceMappingURL=main.ab4eceed.css.map*/
+/*# sourceMappingURL=main.4290941c.css.map*/
