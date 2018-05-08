@@ -15,6 +15,7 @@ const share = require('../../assets/images/share.svg');
 const megaphone = require('../../assets/images/megaphone.svg');
 const styles = require('./GameHeader.scss');
 const starArray = [1, 2, 3, 4, 5];
+const fullScreenOffIcon = require('../../assets/images/fullscreen-off.svg');
 
 interface IProps {
   gameName: string;
@@ -25,6 +26,8 @@ interface IProps {
   paypalUsername?: string;
   patreonUsername?: string;
   toggleFeedbackModalIsVisible: () => void;
+  inFullScreen: boolean;
+  toggleCurrentGameInFullScreen: () => any;
 }
 
 interface InnerState {
@@ -117,19 +120,16 @@ export default class GameHeader extends React.PureComponent<
     );
   }
 
-  renderLeftSide(): JSX.Element {
-    const { gameName, name, createdDate } = this.props;
+  renderGameDetails(): JSX.Element | null {
+    const { name, createdDate, inFullScreen } = this.props;
     const { collapsed } = this.state;
 
+    if (inFullScreen) {
+      return null;
+    }
+
     return (
-      <div className={styles.leftSide}>
-        <span
-          className={classnames(styles.gameName, {
-            [styles.collapsed]: collapsed
-          })}
-        >
-          {gameName}
-        </span>
+      <React.Fragment>
         <div
           className={classnames(styles.text, styles.devContainer, {
             [styles.collapsed]: collapsed
@@ -149,6 +149,25 @@ export default class GameHeader extends React.PureComponent<
           <span>Rating:</span>
           {this.renderStars()}
         </div>
+      </React.Fragment>
+    );
+  }
+
+  renderLeftSide(): JSX.Element {
+    const { gameName, inFullScreen } = this.props;
+    const { collapsed } = this.state;
+
+    return (
+      <div className={styles.leftSide}>
+        <span
+          className={classnames(styles.gameName, {
+            [styles.collapsed]: collapsed,
+            [styles.inFullScreen]: inFullScreen
+          })}
+        >
+          {gameName}
+        </span>
+        {this.renderGameDetails()}
       </div>
     );
   }
@@ -175,8 +194,23 @@ export default class GameHeader extends React.PureComponent<
     );
   }
 
+  exitFullScreen = () => {
+    document.getElementsByTagName('body')[0].className = '';
+    this.props.toggleCurrentGameInFullScreen();
+  };
+
   renderRightSide(): JSX.Element {
     const { collapsed } = this.state;
+    const { inFullScreen } = this.props;
+
+    if (inFullScreen) {
+      return (
+        <div onClick={this.exitFullScreen} className={styles.fullScreenText}>
+          Exit fullscreen
+          <img className={styles.fullscreenIcon} src={fullScreenOffIcon} />
+        </div>
+      );
+    }
 
     return (
       <div className={styles.rightSide}>
@@ -195,17 +229,21 @@ export default class GameHeader extends React.PureComponent<
 
   render(): JSX.Element {
     const { collapsed } = this.state;
+    const { inFullScreen } = this.props;
 
     return (
       <React.Fragment>
         <div
           className={classnames(styles.placeHolder, {
-            [styles.collapsed]: collapsed
+            [styles.collapsed]: collapsed,
+            [styles.inFullScreen]: inFullScreen
           })}
         >
           <div
             className={classnames(styles.outerGameHeader, {
-              [styles.collapsed]: collapsed
+              [styles.collapsed]: collapsed,
+
+              [styles.inFullScreen]: inFullScreen
             })}
             ref={this.header}
           >

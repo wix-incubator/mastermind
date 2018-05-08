@@ -1,7 +1,17 @@
 import scrollToElement from 'scroll-to-element';
 
-export const scrollToTop = () => {
-  scrollToElement('#top', { duration: 800 });
+interface IOpts {
+  duration?: number;
+}
+
+export const scrollToTop = (opts: IOpts = {}): Promise<any> => {
+  const duration = typeof opts.duration !== undefined ? opts.duration : 800;
+  return new Promise(resolve => {
+    scrollToElement('#top', { duration });
+    setTimeout(() => {
+      resolve();
+    }, duration);
+  });
 };
 
 export const scrollToGameDetails = () => {

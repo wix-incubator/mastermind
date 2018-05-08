@@ -17,6 +17,10 @@ $animationTime: 400ms;
     position: fixed;
     top: 0;
   }
+  &.inFullScreen {
+    height: $gameHeaderInFullScreen;
+    top: calc(100vh - #{$gameHeaderInFullScreen});
+  }
 }
 
 .placeHolder {
@@ -70,6 +74,10 @@ $animationTime: 400ms;
   transition: margin $animationTime ease-in-out;
   &.collapsed {
     margin-top: 16px;
+  }
+  &.inFullScreen {
+    @include Header(18px);
+    margin-top: 13px;
   }
 }
 
@@ -138,4 +146,21 @@ $animationTime: 400ms;
 
 .shareIcon {
   width: 18px;
+}
+
+.fullScreenText {
+  @include Text(12px);
+  color: $white;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  width: 100px;
+}
+
+.fullscreenIcon {
+  fill: $white;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
 }

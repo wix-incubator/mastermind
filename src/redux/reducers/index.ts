@@ -25,6 +25,9 @@ const { selectors, actions, superReducer } = reduxCornell({
       results: null,
       query: '',
       isOverlayVisible: false
+    },
+    currentGame: {
+      inFullScreen: false
     }
   }
 });

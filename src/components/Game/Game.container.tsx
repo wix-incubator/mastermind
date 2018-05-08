@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Game from './Game';
-import { selectors } from '../../redux/reducers';
+import { selectors, actions } from '../../redux/reducers';
 import { IGame } from '../../types/game';
 import { IState } from '../../types/state';
 import { match } from 'react-router';
 import { fetchGames } from '../../actions/gameActions';
-const { getGamesData } = selectors;
+const { getGamesData, getCurrentGameInFullScreen } = selectors;
+const { toggleCurrentGameInFullScreen } = actions;
 
 interface MatchParams {
   id: string;
@@ -16,6 +17,8 @@ interface IProps {
   game: IGame;
   match: match<MatchParams>;
   fetchGames: () => any;
+  inFullScreen: boolean;
+  toggleCurrentGameInFullScreen: () => any;
 }
 
 class GameContainer extends React.PureComponent<IProps> {
@@ -27,7 +30,14 @@ class GameContainer extends React.PureComponent<IProps> {
   }
 
   render() {
-    return <Game {...this.props.game} />;
+    const { inFullScreen, toggleCurrentGameInFullScreen, game } = this.props;
+    return (
+      <Game
+        inFullScreen={inFullScreen}
+        toggleCurrentGameInFullScreen={toggleCurrentGameInFullScreen}
+        {...game}
+      />
+    );
   }
 }
 
@@ -37,8 +47,12 @@ const mapStateToProps = (
 ) => {
   const { id } = match.params;
   return {
-    game: getGamesData(state)[id]
+    game: getGamesData(state)[id],
+    inFullScreen: getCurrentGameInFullScreen(state)
   };
 };
 
-export default connect(mapStateToProps, { fetchGames })(GameContainer);
+export default connect(mapStateToProps, {
+  fetchGames,
+  toggleCurrentGameInFullScreen
+})(GameContainer);

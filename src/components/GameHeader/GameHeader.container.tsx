@@ -7,8 +7,12 @@ import { IGame } from '../../types/game';
 import { IDev } from '../../types/dev';
 import { IState } from '../../types/state';
 import { sendFeedback } from '../../actions/feedbackActions';
-const { getDevsData, getFeedbackModalIsVisible } = selectors;
-const { toggleFeedbackModalIsVisible } = actions;
+const {
+  getDevsData,
+  getFeedbackModalIsVisible,
+  getCurrentGameInFullScreen
+} = selectors;
+const { toggleFeedbackModalIsVisible, toggleCurrentGameInFullScreen } = actions;
 
 interface IProps {
   dev: IDev;
@@ -16,6 +20,8 @@ interface IProps {
   toggleFeedbackModalIsVisible: () => void;
   sendFeedback: () => any;
   isFeedbackModalVisible: boolean;
+  inFullScreen: boolean;
+  toggleCurrentGameInFullScreen: () => any;
 }
 
 class GameHeaderContainer extends React.PureComponent<IProps> {
@@ -28,6 +34,8 @@ class GameHeaderContainer extends React.PureComponent<IProps> {
       toggleFeedbackModalIsVisible,
       isFeedbackModalVisible,
       sendFeedback,
+      inFullScreen,
+      toggleCurrentGameInFullScreen,
       game: {
         paypalUsername,
         patreonUsername,
@@ -57,6 +65,8 @@ class GameHeaderContainer extends React.PureComponent<IProps> {
           rating={rating}
           githubUrl={githubUrl}
           toggleFeedbackModalIsVisible={toggleFeedbackModalIsVisible}
+          inFullScreen={inFullScreen}
+          toggleCurrentGameInFullScreen={toggleCurrentGameInFullScreen}
         />
       </React.Fragment>
     );
@@ -69,11 +79,13 @@ const mapStateToProps = (
 ) => {
   return {
     dev: getDevsData(state)[developerGithubId],
-    isFeedbackModalVisible: getFeedbackModalIsVisible(state)
+    isFeedbackModalVisible: getFeedbackModalIsVisible(state),
+    inFullScreen: getCurrentGameInFullScreen(state)
   };
 };
 
 export default connect(mapStateToProps, {
   toggleFeedbackModalIsVisible,
-  sendFeedback
+  sendFeedback,
+  toggleCurrentGameInFullScreen
 })(GameHeaderContainer);
